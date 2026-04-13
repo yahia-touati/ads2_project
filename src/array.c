@@ -23,10 +23,24 @@ int insertAt(int arr[], int* size, int index, int value) {
     if (*size >= MAX_1D) return -1;             // array full
 
     for (int i = *size; i > index; i--)
+    {
         arr[i] = arr[i - 1];
-
+    }
     arr[index] = value;
     (*size)++;
+    return 0;
+}
+
+/* Delete an element from the array */
+int deleteAt(int arr[], int* size, int index)
+{
+    if (index < 0 || index >= *size || *size <= 0) return -1;
+
+    for (int i = index; i < *size - 1; i++)
+    {
+        arr[i] = arr[i + 1];
+    }
+    (*size)--;
     return 0;
 }
 
@@ -40,5 +54,28 @@ int linearSearch(int arr[], int size, int value)
             return i;
         }
     }
+    return -1;
+}
+/* Binary Search */
+int   binarySearch(int arr[], int size, int value)
+{
+    int left = 0;
+    int rithe = size - 1;
+    while (left <= rithe)
+    {
+        int mid = (left + rithe) / 2;
+        if (arr[mid] == value)
+        {
+            return mid;
+        }
+        else if(arr[mid] > value)
+        {
+            rithe = mid - 1;
+        }
+        else
+        {
+            left = mid + 1;
+        }
+    } 
     return -1;
 }
