@@ -79,3 +79,19 @@ int   binarySearch(int arr[], int size, int value)
     } 
     return -1;
 }
+/* Merge Sort */
+void  mergeSort(int arr[], int left, int right)
+{
+    if (left >= right) return ;
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        mergeSortedArrays(a, na, b, nb, out);
+    }
+}
+void mergeSortedArrays(int a[], int na, int b[], int nb, int out[])
+{
+    
+}
