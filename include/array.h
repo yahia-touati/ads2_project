@@ -15,6 +15,7 @@ void  selectionSort(int arr[], int size);
 void  insertionSort(int arr[], int size);
 void  mergeSort(int arr[], int left, int right);
 void  quickSort(int arr[], int low, int high);
+void swap (int *a, int *b);
 int   findMax(int arr[], int size);
 int   findMin(int arr[], int size);
 int   sumArray(int arr[], int size);

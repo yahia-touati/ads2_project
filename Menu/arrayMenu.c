@@ -10,7 +10,8 @@ void arrayMenu(int arr[], int *size) {
     do {
         printf("\n=== ARRAY MENU ===\n");
         printf("1. Insert element\n2. Delete element\n"
-               "3. Search\n4. Sort\n5. Display\n6. Enter values\n0. Back\nChoice: ");
+               "3. Search\n4. Sort\n5. Display\n6. Enter values\n"
+               "7. Max Number\n8. Min number\n0. Back\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
             case 1:
@@ -32,6 +33,14 @@ void arrayMenu(int arr[], int *size) {
                 break;
             case 6:
                 ReadArray(arr, size);
+                break;
+            case 7:
+                int Max = findMax(arr, *size);
+                printf("The lorges number is: %d", Max);
+                break;
+            case 8:
+                int Min = findMin(arr, *size);
+                printf("The smallest number is: %d", Min);
                 break;
             default:
                 printf("Invalid choice! Please try again.\n");
@@ -92,12 +101,15 @@ void SortMenu(int arr[], int size)
             case 2:
                 break;
             case 3:
+                insertionSort(arr, size);
                 break;
             case 4:
                 sortEntireArray(arr, size);
                 printArray(arr, size);
                 break;
             case 5:
+                sort_quick(arr, size);
+                printArray(arr, size);
                 break;
             default:
                 printf("Invalid choice! Please try again.\n");
@@ -107,4 +119,8 @@ void SortMenu(int arr[], int size)
 void sortEntireArray(int arr[], int size)
 {
     mergeSort(arr, 0, size - 1);
+}
+void sort_quick(int arr[], int size)
+{
+    quickSort(arr, 0, size - 1);
 }

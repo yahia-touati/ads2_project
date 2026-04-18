@@ -8,6 +8,11 @@ void ReadArray(int arr[], int *size)
 {
     printf("Enter the size of array: ");
     scanf("%d", size);
+    if (*size > MAX_1D || *size < 0)
+    {
+        printf("Error: \n");
+        return ;
+    }
     printf("Enter the values:\n");
     for (int i = 0; i < *size; i++)
     {
@@ -92,6 +97,40 @@ int binarySearch(int arr[], int size, int value)
     } 
     return -1;
 }
+/* Bubble Sort */
+void  bubbleSort(int arr[], int size){
+    while (true)
+    {
+        bool flag = false ; 
+        for (int  i = 0; i < size -1; i++)
+        {
+            if (arr[i] > arr [i+1] ){
+                int tmp ; 
+                tmp = arr[i] ; 
+                arr [i] = arr[i+1] ;
+                arr[i+1] = tmp ; 
+                flag = true ;
+            }
+        }
+        if (flag == false)
+        {
+            break; 
+        }
+    }
+}
+/* Insertion Sort */
+void  insertionSort(int arr[], int size){
+    for (int i = 1; i < size ; i++){
+        for (int  j = i; j > 0; j--){
+            if (arr[j] < arr [j-1] ){
+                int tmp ; 
+                tmp = arr[j] ; 
+                arr [j] = arr[j-1] ;
+                arr[j-1] = tmp ; 
+            }       
+          }
+     }
+ }
 /* Merge Sort */
 void  mergeSort(int arr[], int left, int right)
 {
@@ -140,23 +179,66 @@ void mergeSortedArrays(int a[], int na, int b[], int nb, int out[])
         k++;
     }
 }
-void  bubbleSort(int arr[], int size){
-    while (true)
+
+/* Quick Sort */
+int partition(int arr[], int low, int high);
+void  quickSort(int arr[], int low, int high)
+{
+    if (low < high)
     {
-        bool flag = false ; 
-        for (int  i = 0; i < size -1; i++)
-        {
-            if (arr[i] > arr [i+1] ){
-                int tmp ; 
-                tmp = arr[i] ; 
-                arr [i] = arr[i+1] ;
-                arr[i+1] = tmp ; 
-                flag = true ;
-            }
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi- 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+void swap (int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int partition(int arr[], int low, int high)
+{
+    int poivt = arr[low];
+    int i = low + 1;
+    int j = high;
+    while (i <= j){
+        while (i <= high && arr[i] <= poivt){
+            i++;
         }
-        if (flag == false)
-        {
-            break; 
+        while (j >= low && arr[j] > poivt){
+            j--;
+        }
+        if (i < j){
+            swap(&arr[i], &arr[j]);
         }
     }
+    swap(&arr[low], &arr[j]);
+    return j;
+}
+
+/* Max value */
+int  findMax(int arr[], int size){
+    int Max = arr[0];
+    for (int i = 0; i < size ; i++)
+    {
+         if (arr [i] > Max)
+         {
+            Max = arr[i];
+         }       
+    }
+    return Max ;
+}
+
+/* Min value */
+int  findMin(int arr[], int size){
+    int Min = arr[0];
+    for (int i = 0; i < size ; i++)
+    {
+         if (arr [i] < Min)
+         {
+            Min = arr[i];
+         }       
+    }
+     return Min ;
 }
