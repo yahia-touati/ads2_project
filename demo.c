@@ -9,14 +9,14 @@
 
 
 int main() {
-    int choice;
+    int choice, arr[MAX_1D], size = 0;
     do {
         printf("\n=== ADS2 PROJECT DEMO ===\n");
         printf("1. Arrays\n2. Linked Lists\n3. Stacks\n"
                "4. Queues\n5. File Handling\n6. String Utils\n0. Exit\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
-            case 1: arrayMenu(); 
+            case 1: arrayMenu(arr, &size); 
                 break;
             /*case 2: Linked_ListesMenu(); break;
             case 3: StacksMenu(); break;

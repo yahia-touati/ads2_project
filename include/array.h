@@ -3,6 +3,7 @@
 #include "common.h"
 
 /* --- 1D Array --- */
+void  ReadArray(int arr[], int *size);
 void  initArray(int arr[], int* size);
 void  printArray(int arr[], int size);
 int   insertAt(int arr[], int* size, int index, int value);
