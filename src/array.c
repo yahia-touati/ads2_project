@@ -242,3 +242,68 @@ int  findMin(int arr[], int size){
     }
      return Min ;
 }
+/* --- 2D Matrix --- */
+/* Add tow matrix */
+void  addMatrices(int a[][MAX_COLS], int b[][MAX_COLS], int r[][MAX_COLS], int rows, int cols)
+{
+     /*This condtion is imosed to protedt the memory*/
+    if(rows <= MAX_ROWS && cols <= MAX_COLS && rows < 0 && cols < 0){
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                r[i][j] = a[i][j] + b[i][j];
+            }
+        }
+    }
+   else {
+    printf("Error: Invalid dimensions.\n");
+    return;
+   }
+}
+/* Multiplying tow matrix */
+void  multiplyMatrices(int a[][MAX_COLS], int b[][MAX_COLS], int r[][MAX_COLS], int n)
+{
+    if (n <= MAX_COLS && n <= MAX_ROWS && n > 0)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                r[i][j] = 0;
+                for (int k = 0; k < n; k++)
+                {
+                    r[i][j] = r[i][j] + a[i][k] * b[k][j];
+                }
+            }
+        }
+    }
+    else {
+    printf("Error: Invalid dimensions.\n");
+    return;
+    }
+}
+/* Calculating the digonal sum of a matrix */
+int  sumDiagonal(int m[][MAX_COLS], int n)
+{
+    int sumDiagonal = 0;
+    if (n > 0 && n <= MAX_COLS && n <= MAX_ROWS){
+        for (int i = 0; i < n; i++)
+        {
+            sumDiagonal += m[i][i];
+        }
+    }
+    return sumDiagonal;
+}
+/* Calculating tha indigonal sum of matrix */
+int  sumAntiDiagonal(int m[][MAX_COLS], int n)
+{
+    int sumAntiDiagonal = 0;
+    if (n > 0 && n <= MAX_COLS && n <= MAX_ROWS){
+        for (int i = 0; i < n; i++)
+        {
+           sumAntiDiagonal += m[i][n - i - 1];
+        }
+    }
+    return sumAntiDiagonal;
+}

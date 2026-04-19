@@ -19,7 +19,6 @@
 ### Algorithm
 ​1. Access the memory location of size.
 ​2. Assign 0 to *size.
-
 ​# Function : printArray
 
 ## ​Problem Understanding
@@ -58,8 +57,7 @@
 ​2. Shift all elements from index + 1 to the end one position to the left.
 ​3. Overwrite each element with its successor to "close the gap".
 ​4. Decrement *size by 1.
-
-​# Function 6: linearSearch
+# ​ Function 6: linearSearch
 ​
 ## Problem Understanding
 - ​Input: arr[], size, value (target to find).
