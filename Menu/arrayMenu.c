@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Menu.h"
+#include "../include/Menu.h"
 #include "../include/common.h"
 #include "../include/array.h"
 
@@ -62,7 +62,7 @@ void searchMenu(int arr[], int size)
                 int s = linearSearch(arr, size, value);
                 if (s != -1)
                 {
-                    printf("The location of the number is: \n", s + 1);
+                    printf("The location of the number is: %d\n", s + 1);
                 } else  {
                     printf("This number does not exist\n");
                 }
