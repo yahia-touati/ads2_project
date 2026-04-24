@@ -9,9 +9,9 @@ void arrayMenu(int arr[], int *size) {
     int choice, value, index;
     do {
         printf("\n=== ARRAY MENU ===\n");
-        printf("1. Insert element\n2. Delete element\n"
-               "3. Search\n4. Sort\n5. Display\n6. Enter values\n"
-               "7. Max Number\n8. Min number\n0. Back\nChoice: ");
+        printf("1. Insert element\t2. Delete element\t"
+               "3. Search\n4. Sort\t5. Display\t6. Enter values\n"
+               "7. Max Number\t8. Min number\t0. Back\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
             case 1:
@@ -46,6 +46,26 @@ void arrayMenu(int arr[], int *size) {
                 printf("Invalid choice! Please try again.\n");
         }
     } while (choice != 0);
+}
+void MatricMenu(int a[][MAX_COLS], int *cols, int *rows)
+{
+    int choice;
+    do {
+    printf("\n=== MATRIX MENU ===\n");
+    printf("1. Enter the value\t2. Add tow matrices\t"
+            "3. Multiply tow matrices\n4. Sum diagonal\t"
+            "5. Sum anti diagonal\t6. ");
+    scanf("%d", &choice);
+    switch(choice){
+        case 1:
+            printf("Entre the numbers of columns and rows: ");
+            scanf("%d %d", cols, rows);
+            ReadMatrix(a, cols, rows);
+            break;
+
+    }
+    }while (choice != 0);
+
 }
 void searchMenu(int arr[], int size)
 {
@@ -97,11 +117,13 @@ void SortMenu(int arr[], int size)
         {
             case 1:
                 bubbleSort(arr, size);
+                printArray(arr, size);
                 break;
             case 2:
                 break;
             case 3:
                 insertionSort(arr, size);
+                printArray(arr, size);
                 break;
             case 4:
                 sortEntireArray(arr, size);

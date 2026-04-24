@@ -25,6 +25,7 @@ void  rotateLeft(int arr[], int size, int k);
 void  mergeSortedArrays(int a[], int na, int b[], int nb, int out[]);
 
 /* --- 2D Matrix --- */
+void  ReadMatrix(int a[][MAX_COLS], int *cols, int *rows);
 void  initMatrix(int m[][MAX_COLS], int* rows, int* cols);
 void  printMatrix(int m[][MAX_COLS], int rows, int cols);
 void  transposeMatrix(int m[][MAX_COLS], int rows, int cols, int out[][MAX_COLS]);

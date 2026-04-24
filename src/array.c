@@ -244,6 +244,22 @@ int  findMin(int arr[], int size){
 }
 /* --- 2D Matrix --- */
 /* Add tow matrix */
+void ReadMatrix(int a[][MAX_COLS], int *cols, int *rows)
+{
+    int count = 1;
+    if (*cols <= MAX_COLS && *rows <= MAX_ROWS && *cols > 0 && *rows > 0)
+    {
+        for (int i = 0; i < *cols; i++)
+        {
+            for (int j = 0; j < *rows; j++)
+            {
+                printf("Element [%d]: ", count);
+                scanf("%d", &a[i][j]);
+                count++;
+            }
+        }
+    }
+}
 void  addMatrices(int a[][MAX_COLS], int b[][MAX_COLS], int r[][MAX_COLS], int rows, int cols)
 {
      /*This condtion is imosed to protedt the memory*/

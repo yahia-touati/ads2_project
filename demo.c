@@ -10,13 +10,19 @@
 
 int main() {
     int choice, arr[MAX_1D], size = 0;
+    int cols = 0;
+    int rows = 0;
+    int a[MAX_ROWS][MAX_COLS];
     do {
         printf("\n=== ADS2 PROJECT DEMO ===\n");
-        printf("1. Arrays\n2. Linked Lists\n3. Stacks\n"
-               "4. Queues\n5. File Handling\n6. String Utils\n0. Exit\nChoice: ");
+        printf("1. Arrays\n2. Matrices\n3. Linked Lists\n4. Stacks\n"
+               "5. Queues\n6. File Handling\n7. String Utils\n0. Exit\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
             case 1: arrayMenu(arr, &size); 
+                break;
+            case 2: 
+                MatricMenu(a, &cols, &rows);
                 break;
             /*case 2: Linked_ListesMenu(); break;
             case 3: StacksMenu(); break;
