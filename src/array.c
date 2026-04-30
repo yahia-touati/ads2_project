@@ -242,7 +242,80 @@ int  findMin(int arr[], int size){
     }
      return Min ;
 }
+
+/* Computes the sum of an array of integers */
+int sumArray(int arr[], int size) {
+    int sum = 0;
+    if (size < 0) {
+        return 0; // Return 0 for negative size, as it's invalid
+    }
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum; // Return the computed sum of the array elements
+}
+
+/* Computes the average of an array of integers */
+double averageArray(int arr[], int size) {
+    if (size <= 0) {
+        return 0.0; // Return 0.0 for non-positive size as it's invalid for averaging
+    }
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return (double)sum / size; // Return the computed average of the array elements
+}
+
+/* Reverses the elements of an array of integers in place */
+void reverseArray(int arr[], int size) {
+    for (int i = 0; i < size / 2; i++) {
+        int temp = arr[i];
+        arr[i] = arr[size - 1 - i];
+        arr[size - 1 - i] = temp;
+    }
+}
+
+/* Rotates the elements of an array of integers to the left by k positions */
+void rotateLeft(int arr[], int size, int k){
+    if (size <= 0 || k <= 0) {
+        return; 
+    }
+    if (k >= size) {
+        k = k % size; 
+    }
+    int temp[k];
+    for (int i = 0; i < k; i++) {
+        temp[i] = arr[i];
+    }
+    for (int i = 0; i < size - k; i++) {
+        arr[i] = arr[i + k];
+    }
+    for (int i = 0; i < k; i++) {
+        arr[size - k + i] = temp[i];
+    }
+}
 /* --- 2D Matrix --- */
+
+/* Prints a 2D matrix of integers to the console */
+void printMatrix(int m[][MAX_COLS], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/* Transposes a 2D matrix of integers */
+void transposeMatrix(int m[][MAX_COLS], int rows, int cols, int out[][MAX_COLS]) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            out[j][i] = m[i][j];
+        }
+    }
+}
+
 /* Add tow matrix */
 void ReadMatrix(int a[][MAX_COLS], int *cols, int *rows)
 {
@@ -322,4 +395,24 @@ int  sumAntiDiagonal(int m[][MAX_COLS], int n)
         }
     }
     return sumAntiDiagonal;
+}
+/* --- Dynamic Arrays --- */
+
+/* Creates a dynamic array of integers with the specified capacity */
+int* createDynamicArray(int capacity) {
+    if (capacity <= 0) {
+        return NULL; // Return NULL for non-positive capacity
+    }
+    int* arr = (int*)malloc(capacity * sizeof(int));
+    if (arr == NULL) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    return arr; // Return the pointer to the newly created dynamic array
+}
+
+/* Fills an array of integers with user input */
+void fillArray(int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
 }
