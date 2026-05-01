@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../include/Menu.h"
 #include "../include/common.h"
 #include "../include/array.h"
@@ -76,66 +77,67 @@ void arrayMenu(int arr[], int *size) {
 }
 void DynamicArray(int arr[], int size)
 {
-    int capacity;
+    int* d_arr = NULL;
+    int capacity = 0;
+    int choice;
     do{
         printf("=== Dynamic Array ===\n");
-        printf("1. Create Dynamic Array\n2. Fill Dynamic Array\n"
-            "3. Print Dynamic Array\n4. Resize Dynamic Array\n5. Free Dynamic Array\n0. Back\nChoice: ");
-        scanf("%d", &capacity);
-        switch (capacity) {
+        printf("1. Create \n2. Fill \n"
+            "3. Print \n4. Resize \n5. Free \n0. Back\nChoice: ");
+        scanf("%d", &choice);
+        switch (choice) {
             case 1:
+                if (d_arr != NULL) {
+                free(d_arr);
+                }
                 printf("Entre the capacity of the dynamic array: ");
                 scanf("%d", &capacity);
-                int* arr = createDynamicArray(capacity);
-                if (arr != NULL) {
-                    printf("Dynamic array created with capacity %d.\n", capacity);
-                } else {
-                    printf("Failed to create dynamic array. Please try again.\n");
-                }
+                d_arr = createDynamicArray(capacity);
+                if (d_arr != NULL) 
+                printf("Creaeted!\n");
                 break;
             case 2:
-                if (arr != NULL) {
-                    printf("Enter %d integers:\n", capacity);
-                    fillArray(arr, capacity);
-                } else {
-                    printf("Please create a dynamic array first.\n");
+                if (d_arr != NULL)
+                fillArray(d_arr, capacity);
+                else{
+                    printf("Create array firset!\n");
                 }
                 break;
             case 3:
-                if (arr != NULL) {
+                if (d_arr != NULL) {
                     printf("Dynamic Array: ");
-                    printArray(arr, capacity);
+                    printArray(d_arr, capacity);
                 } else {
                     printf("Please create a dynamic array first.\n");
                 }
                 break;
             case 4:
-                if (arr != NULL) {
-                    int newCapacity;
+                if (d_arr != NULL) {
+                    int newSize;
                     printf("Enter new capacity: ");
-                    scanf("%d", &newCapacity);
-                    int* newArr = resizeArray(arr, newCapacity);
+                    scanf("%d", &newSize);
+                    int* newArr = resizeArray(d_arr, newSize);
                     if (newArr != NULL) {
                         arr = newArr;
-                        capacity = newCapacity;
-                        printf("Dynamic array resized to capacity %d.\n", newCapacity);
-                    } else {
-                        printf("Failed to resize dynamic array. Please try again.\n");
-                    } }
+                        capacity = newSize;
+                    }
+                }
                 break; 
             case 5:
-                if (arr != NULL) {
-                    freeArray(&arr);
-                    arr = NULL;
+                if (d_arr != NULL) {
+                    freeArray(&d_arr);
+                    d_arr = NULL;
                     printf("Dynamic array freed successfully.\n");
-                } else {
-                    printf("No dynamic array to free. Please create one first.\n");
                 }
                 break;
             default:
                 printf("Invalid choice! Please try again.\n");    
         }
     }while(capacity != 0);
+    if (d_arr != NULL) {
+        free(d_arr);
+        d_arr =NULL;
+    }
 }
 void searchMenu(int arr[], int size){
     int choice, value;
