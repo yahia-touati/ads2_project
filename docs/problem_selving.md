@@ -226,3 +226,17 @@
 2.Set front to NULL.
 3.Set rear to NULL.
 4.The queue is now empty and ready for use.
+
+#Function 59: writeRecord
+
+##Problem Understanding
+    -Input: file name filename, pointer to record r
+    -Output: appends the record to the file in binary format
+
+#Algorithm (writeRecord)
+1.Open the file in append-binary mode "ab".
+2.If file opening fails, return -1.
+3.Write the record to the file using fwrite.
+4.If writing fails, close the file and return -1.
+5.Close the file.
+6.Return success.
