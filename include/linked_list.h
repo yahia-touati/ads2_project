@@ -9,6 +9,10 @@ void displayList(List* L);
 /* --- Doubly Linked List --- */
 int insertEndDLL(DLL* L, int value);
 
+/* --- Stack --- */
+int push(Stack* S, int value);
+
+
 
 
 #endif

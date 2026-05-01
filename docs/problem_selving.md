@@ -200,5 +200,18 @@
     -Update tail to the new node.
 5.Return success status.
 
+#Function 49: push
+
+##Problem Understanding
+ -Input: stack S, value value
+ -Output: pushes a new value onto the top of the stack
+ 
+#Algorithm (push)
+1.Allocate a new node.
+2.If allocation fails, return -1.
+3.Assign the value to the node.
+4.Set the node’s next to the current top.
+5.Update the stack’s top to the new node.
+6.Return success.
 
 
