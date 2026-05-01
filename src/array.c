@@ -400,7 +400,21 @@ void fillArray(int* arr, int size) {
         scanf("%d", &arr[i]);
     }
 }
-/**/
+/* Resizes a dynamic array to a new capacity */
+int*  resizeArray(int* arr, int newCapacity)
+{
+    if (newCapacity <= 0) {
+        return NULL; // Return NULL for non-positive new capacity   
+    }
+    int* newarr = (int*)malloc(newCapacity * sizeof(int));
+    if (newarr == NULL) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    for (int i = 0; i < newCapacity; i++) {
+        newarr[i] = arr[i]; 
+    }
+    return newarr;
+}
 /* Memory management */
 void freeArray(int** arr)
 {

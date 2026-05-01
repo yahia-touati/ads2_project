@@ -7,5 +7,6 @@ void SortMenu(int arr[], int size);
 void searchMenu(int arr[], int size);
 void sortEntireArray(int arr[], int size);
 void sort_quick(int arr[], int size);
+void DynamicArray(int arr[], int size);
 
 #endif
