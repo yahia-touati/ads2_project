@@ -99,35 +99,4 @@ int insertEndDLL(DLL* L, int value)
     return 1;
 }
 
-/* --- Stack --- */
-
-/* Pushes a value onto the top of the stack */
-int push(Stack* S, int value)
-{
-    if (S == NULL)
-        return -1;
-
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL)
-        return -1;
-
-    newNode->data = value;
-    newNode->next = S->top;
-    S->top = newNode;
-
-    return 1;
-}
-
-/* --- Queue --- */
-
-/* Initializes an empty queue by setting front and rear to NULL */
-void initQueue(Queue* Q)
-{
-    if (Q == NULL)
-        return;
-
-    Q->front = NULL;
-    Q->rear = NULL;
-}
-
 
