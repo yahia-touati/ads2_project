@@ -9,38 +9,62 @@ void arrayMenu(int arr[], int *size) {
     int choice, value, index;
     do {
         printf("\n=== ARRAY MENU ===\n");
-        printf("1. Insert element\n2. Delete element\n"
-               "3. Search\n4. Sort\n5. Display\n6. Enter values\n"
-               "7. Max Number\n8. Min number\n0. Back\nChoice: ");
+        printf("1. Entre values\t\t2. Initialize Sire\t3. Dispaly\n");
+        printf("4. Insert element\t5. Delete element\t6. Search\n");
+        printf("7. Sort\t\t\t8. Max Number\t\t9. Min number\n");
+        printf("10. Sum\t\t\t11. Average\t\t12. Reverse\n");
+        printf("13. Rotate left\t\t0. Back\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
             case 1:
+                ReadArray(arr, size);
+                break;
+            case 2:
+                initArray(arr, size);
+            case 3: 
+                printArray(arr, *size);
+                break;
+             case 4:
                 printf("Index and value: ");
                 scanf("%d %d", &index, &value);
                 insertAt(arr, size, index, value);
                 break;
-            case 2:
+            case 5:
                 printf("Entre the index: ");
                 scanf("%d", &index);
                 deleteAt(arr, size, index);
                 break;
-            case 3: searchMenu(arr, *size);
+            case 6: searchMenu(arr, *size);
                 break;
-            case 4: SortMenu(arr, *size);
+            case 7: SortMenu(arr, *size);
                 break;
-            case 5: 
-                printArray(arr, *size);
-                break;
-            case 6:
-                ReadArray(arr, size);
-                break;
-            case 7:
+            case 8:
                 int Max = findMax(arr, *size);
                 printf("The lorges number is: %d", Max);
                 break;
-            case 8:
+            case 9:
                 int Min = findMin(arr, *size);
                 printf("The smallest number is: %d", Min);
+                break;
+            case 10:
+                int Sum = sumArray(arr, *size);
+                printf("The sum of the elements in the array is: %d", Sum);
+                break;
+            case 11:
+                double avrage = averageArray(arr, *size);
+                printf("The average of element is: %.2lf\n", avrage);
+                break;
+            case 12:
+                reverseArray(arr, *size);
+                printArray(arr, *size);
+                break;
+            case 13:
+            int k;
+                printf("Entre number of positions to rotate left: ");
+                scanf("%d", &k);
+                rotateLeft(arr, *size, k);
+                printf("Array rotated succesfully\n");
+                printArray(arr, *size);
                 break;
             default:
                 printf("Invalid choice! Please try again.\n");
@@ -97,11 +121,13 @@ void SortMenu(int arr[], int size)
         {
             case 1:
                 bubbleSort(arr, size);
+                printArray(arr, size);
                 break;
             case 2:
                 break;
             case 3:
                 insertionSort(arr, size);
+                printArray(arr, size);
                 break;
             case 4:
                 sortEntireArray(arr, size);

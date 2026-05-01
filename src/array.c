@@ -400,3 +400,11 @@ void fillArray(int* arr, int size) {
         scanf("%d", &arr[i]);
     }
 }
+/**/
+/* Memory management */
+void freeArray(int** arr)
+{
+    if (arr == NULL || *arr == NULL) return;
+    free(*arr);
+    *arr = NULL;
+}
