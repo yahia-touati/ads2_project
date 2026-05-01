@@ -214,4 +214,15 @@
 5.Update the stack’s top to the new node.
 6.Return success.
 
+#Function 53: initQueue
 
+##Problem Understanding
+    -Input: queue Q
+    -Output: initializes the queue to an empty state
+
+#Algorithm (initQueue)
+
+1.Check if the queue pointer is valid.
+2.Set front to NULL.
+3.Set rear to NULL.
+4.The queue is now empty and ready for use.

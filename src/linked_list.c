@@ -117,3 +117,17 @@ int push(Stack* S, int value)
 
     return 1;
 }
+
+/* --- Queue --- */
+
+/* Initializes an empty queue by setting front and rear to NULL */
+void initQueue(Queue* Q)
+{
+    if (Q == NULL)
+        return;
+
+    Q->front = NULL;
+    Q->rear = NULL;
+}
+
+
