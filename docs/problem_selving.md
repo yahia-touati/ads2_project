@@ -150,4 +150,35 @@
 6.Repeat until the entire row is sorted.
 7.Move to the next row and repeat the process.
 
+#Function 33: insertAtPosition
 
+##Problem Understanding
+ -Input: linked list L, position pos, value value
+ -Output: inserts a new node containing value at position pos (1-based index)
+ 
+#Algorithm (insertAtPosition)
+1.Create a new node and assign it the given value.
+2.If the position is invalid (pos ≤ 0), stop and return failure.
+3.If inserting at position 1:
+    -Link the new node to the current head.
+    -Update head to the new node.
+4.Otherwise, traverse the list to reach the node at position pos - 1.
+5.If that position does not exist, stop and return failure.
+6.Link the new node between the current node and its next node.
+7.Return success.
+
+#Function 38: displayList
+
+##Problem Understanding
+ -Input: linked list L
+ -Output: prints all elements of the list from head to NULL in order
+ 
+#Algorithm (displayList)
+1.Check if the list is empty (L == NULL). If yes, stop.
+2.Set a pointer current to the head of the list.
+3.Traverse the list while current is not NULL.
+4.Print the data of the current node.
+5.If there is a next node, print an arrow “->”.
+6.If it is the last node, print “-> NULL”.
+7.Move to the next node.
+8.End when reaching NULL.

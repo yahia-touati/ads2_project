@@ -40,5 +40,22 @@ typedef struct {
     int rear;   // index of last element
     int count;  // number of elements
 } Queue;
+/* Node for singly linked list */
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
 
-#endif
+/* Node for doubly linked list */
+typedef struct DNode {
+    int data;
+    struct DNode* next;
+    struct DNode* prev;
+} DNode;
+
+/* List structure for singly linked list */
+typedef struct {
+    Node* head;
+} List;
+
+#endif 
