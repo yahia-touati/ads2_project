@@ -123,7 +123,7 @@
 2. ​Copy: Create two temporary arrays (a and b) to store the split data.
 3. ​Conquer: Use mergeSortedArrays to compare elements from a and b and merge them back into the main array in sorted order.
 
-# Functions 11: findMax & findMin
+# Functions 12: findMax & findMin
 
 ## ​Problem Understanding
 ​- Input: arr[], size.
@@ -134,3 +134,20 @@
 ​2. Loop through the array starting from index 0.
 ​3. If any element is greater than Max, update Max with that value.
 ​4. Return Max.
+
+#Function 25: sortRows
+
+## ​Problem Understanding
+-Input:2D array m[][MAX_COLS],number of rows, number of columns 
+-Output: Each row of the matrix is sorted independently in ascending order
+
+#Algorithm (sortRows)
+1.Loop through each row of the matrix.
+2.Treat the current row as a 1D array.
+3.Apply a sorting algorithm (e.g., selection sort) on that row.
+​​4.For each element, find the smallest element in the remaining part of the row.
+5.Swap it with the current position.
+6.Repeat until the entire row is sorted.
+7.Move to the next row and repeat the process.
+
+

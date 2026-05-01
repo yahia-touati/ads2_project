@@ -380,6 +380,31 @@ int  sumAntiDiagonal(int m[][MAX_COLS], int n)
     }
     return sumAntiDiagonal;
 }
+/* Sorts each row of a 2D matrix independently in ascending order */
+void sortRows(int m[][MAX_COLS], int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        // sort row i
+        for (int j = 0; j < cols - 1; j++)
+        {
+            int minIdx = j;
+
+            for (int k = j + 1; k < cols; k++)
+            {
+                if (m[i][k] < m[i][minIdx])
+                {
+                    minIdx = k;
+                }
+            }
+
+            // swap
+            int temp = m[i][j];
+            m[i][j] = m[i][minIdx];
+            m[i][minIdx] = temp;
+        }
+    }
+}
 /* --- Dynamic Arrays --- */
 
 /* Creates a dynamic array of integers with the specified capacity */
