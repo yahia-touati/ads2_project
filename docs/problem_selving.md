@@ -240,3 +240,20 @@
 4.If writing fails, close the file and return -1.
 5.Close the file.
 6.Return success.
+
+#Function 64: updateRecord
+
+##Problem Understanding
+    -Input: file name filename, record index index, pointer to new data newData
+    -Output: updates the record at the given index in the binary file
+    
+#Algorithm (updateRecord)
+1.Open the file in read/write binary mode "r+b".
+2.If opening fails, return -1.
+3.Calculate the byte offset: index * sizeof(Record).
+4.Move the file pointer to that position using fseek.
+5.If seeking fails, close the file and return -1.
+6.Write the new record using fwrite.
+7.If writing fails, close the file and return -1.
+8.Close the file.
+9.Return success.

@@ -10,5 +10,6 @@ typedef struct {
 } Record;
 
 int writeRecord(const char* filename, Record* r);
+int updateRecord(const char* filename, int index, Record* newData);
 
 #endif
