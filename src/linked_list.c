@@ -67,3 +67,34 @@ void displayList(List* L)
 
     printf("\n");
 }
+/* --- Doubly Linked List --- */
+
+/* Inserts a node at the end of a doubly linked list */
+int insertEndDLL(DLL* L, int value)
+{
+    if (L == NULL)
+        return 0;
+
+    DNode* newNode = (DNode*)malloc(sizeof(DNode));
+    if (newNode == NULL)
+        return 0;
+
+    newNode->data = value;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+
+    // empty list
+    if (L->head == NULL)
+    {
+        L->head = newNode;
+        L->tail = newNode;
+        return 1;
+    }
+
+    // link at end
+    newNode->prev = L->tail;
+    L->tail->next = newNode;
+    L->tail = newNode;
+
+    return 1;
+}

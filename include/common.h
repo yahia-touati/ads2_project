@@ -58,4 +58,10 @@ typedef struct {
     Node* head;
 } List;
 
+/* Doubly linked list with head and tail pointers */
+typedef struct {
+    DNode* head;
+    DNode* tail;
+} DLL;
+
 #endif 

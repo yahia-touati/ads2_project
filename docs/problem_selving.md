@@ -182,3 +182,23 @@
 6.If it is the last node, print “-> NULL”.
 7.Move to the next node.
 8.End when reaching NULL.
+
+#Function 44: insertEndDLL
+
+##Problem Understanding
+ -Input: doubly linked list L, value value
+ -Output: inserts a new node at the end of the list
+
+#Algorithm (insertEndDLL)
+1.Create a new node and assign it the given value.
+2.Set the new node’s next pointer to NULL.
+3.If the list is empty:
+    -Set both head and tail to the new node.
+4.Otherwise:
+    -Set new node’s prev to current tail.
+    -Set current tail’s next to the new node.
+    -Update tail to the new node.
+5.Return success status.
+
+
+
