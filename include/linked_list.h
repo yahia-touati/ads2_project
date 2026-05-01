@@ -7,6 +7,8 @@ int insertAtPosition(List* L, int pos, int value);
 void displayList(List* L);
 
 /* --- Doubly Linked List --- */
-void initListDLL(DLL* L); 
+int insertEndDLL(DLL* L, int value);
+
+
 
 #endif
