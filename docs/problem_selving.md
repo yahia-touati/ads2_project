@@ -287,3 +287,18 @@
 4.Swap characters at i and j.
 5.Increment i, decrement j.
 6.Repeat until i >= j.
+
+#Function 77: removeChar
+
+
+##Problem Understanding
+    -Input: string s, character c
+    -Output: removes all occurrences of c from s in place
+    
+#Algorithm (removeChar)
+1.Check if the string is NULL.
+2.Use two indices: i (read) and j (write).
+3.Traverse the string with i.
+4.If s[i] is not equal to c, copy it to s[j] and increment j.
+5.Always increment i.
+6.After traversal, add '\0' at position j.

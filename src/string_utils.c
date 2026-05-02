@@ -55,3 +55,24 @@ void reverseString(char* s)
         j--;
     }
 }
+
+/* Removes all occurrences of a character from a string */
+void removeChar(char* s, char c)
+{
+    if (s == NULL)
+        return;
+
+    int i = 0, j = 0;
+
+    while (s[i] != '\0')
+    {
+        if (s[i] != c)
+        {
+            s[j] = s[i];
+            j++;
+        }
+        i++;
+    }
+
+    s[j] = '\0';
+}
