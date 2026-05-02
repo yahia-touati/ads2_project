@@ -257,3 +257,17 @@
 7.If writing fails, close the file and return -1.
 8.Close the file.
 9.Return success.
+
+#Function 68: my_strcat
+
+##Problem Understanding
+    -Input: destination string dest, source string src
+    -Output: appends src to the end of dest
+    
+#Algorithm (my_strcat)
+1.Check if either pointer is NULL; if so, return dest.
+2.Traverse dest until reaching the null terminator '\0'.
+3.Starting from that position, copy characters from src.
+4.Continue copying until reaching the null terminator of src.
+5.Add a null terminator at the end of the new string.
+6.Return dest.
