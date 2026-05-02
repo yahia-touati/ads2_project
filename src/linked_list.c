@@ -173,6 +173,41 @@ int insertEndDLL(DLL* L, int value)
 
     return 1;
 }
+/* Deletes a node with the specified value from a doubly linked list */
+void deleteByValueDLL(DLL *L, int value)
+{
+    if (L == NULL || L->head == NULL)
+        return;
+    DNode* current = L->head;
+    while (current != NULL)
+    {
+        if (current->data == value)
+        {
+            if (current->prev != NULL)
+            {
+                current->prev->next = current->next;
+            }
+            else // deleting head
+            {
+                L->head = current->next;
+                if (L->head != NULL)
+                    L->head->prev = NULL;
+            }
+            if (current->next != NULL)
+            {
+                current->next->prev = current->prev;
+            }
+            else // deleting tail
+            {
+                L->tail = current->prev;
+                if (L->tail != NULL)
+                    L->tail->next = NULL;
+            }
+            free(current);
+            return;
+        }
+    }
+}
 
 
 
