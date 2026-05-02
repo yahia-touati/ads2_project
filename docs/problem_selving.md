@@ -271,3 +271,19 @@
 4.Continue copying until reaching the null terminator of src.
 5.Add a null terminator at the end of the new string.
 6.Return dest.
+
+#Function 73: reverseString
+
+##Problem Understanding
+    -Input: string s
+    -Output: reverses the string in place
+    
+#Algorithm (reverseString)
+1.Check if the string is NULL.
+2.Find the end of the string manually (no strlen).
+3.Set two pointers:
+    -i at the start (index 0)
+    -j at the last character (before '\0')
+4.Swap characters at i and j.
+5.Increment i, decrement j.
+6.Repeat until i >= j.

@@ -28,3 +28,30 @@ char* my_strcat(char* dest, const char* src)
 
     return dest;
 }
+
+/* Reverses a string in place using two-pointer swapping */
+void reverseString(char* s)
+{
+    if (s == NULL)
+        return;
+
+    int i = 0;
+    int j = 0;
+
+    // find length manually
+    while (s[j] != '\0')
+        j++;
+
+    j--; // last character index
+
+    // swap characters
+    while (i < j)
+    {
+        char temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+
+        i++;
+        j--;
+    }
+}
