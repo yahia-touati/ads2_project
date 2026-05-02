@@ -10,3 +10,7 @@ run: all
 	./$(TARGET)
 clean:	
 	rm -f $(TARGET)
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 00eb491df79eca42736c23e1d9679e874a9f5375

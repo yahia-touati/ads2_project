@@ -123,7 +123,7 @@
 2. ​Copy: Create two temporary arrays (a and b) to store the split data.
 3. ​Conquer: Use mergeSortedArrays to compare elements from a and b and merge them back into the main array in sorted order.
 
-# Functions 11: findMax & findMin
+# Functions 12: findMax & findMin
 
 ## ​Problem Understanding
 ​- Input: arr[], size.
@@ -134,3 +134,171 @@
 ​2. Loop through the array starting from index 0.
 ​3. If any element is greater than Max, update Max with that value.
 ​4. Return Max.
+
+#Function 25: sortRows
+
+## ​Problem Understanding
+-Input:2D array m[][MAX_COLS],number of rows, number of columns 
+-Output: Each row of the matrix is sorted independently in ascending order
+
+#Algorithm (sortRows)
+1.Loop through each row of the matrix.
+2.Treat the current row as a 1D array.
+3.Apply a sorting algorithm (e.g., selection sort) on that row.
+​​4.For each element, find the smallest element in the remaining part of the row.
+5.Swap it with the current position.
+6.Repeat until the entire row is sorted.
+7.Move to the next row and repeat the process.
+
+#Function 33: insertAtPosition
+
+##Problem Understanding
+ -Input: linked list L, position pos, value value
+ -Output: inserts a new node containing value at position pos (1-based index)
+ 
+#Algorithm (insertAtPosition)
+1.Create a new node and assign it the given value.
+2.If the position is invalid (pos ≤ 0), stop and return failure.
+3.If inserting at position 1:
+    -Link the new node to the current head.
+    -Update head to the new node.
+4.Otherwise, traverse the list to reach the node at position pos - 1.
+5.If that position does not exist, stop and return failure.
+6.Link the new node between the current node and its next node.
+7.Return success.
+
+#Function 38: displayList
+
+##Problem Understanding
+ -Input: linked list L
+ -Output: prints all elements of the list from head to NULL in order
+ 
+#Algorithm (displayList)
+1.Check if the list is empty (L == NULL). If yes, stop.
+2.Set a pointer current to the head of the list.
+3.Traverse the list while current is not NULL.
+4.Print the data of the current node.
+5.If there is a next node, print an arrow “->”.
+6.If it is the last node, print “-> NULL”.
+7.Move to the next node.
+8.End when reaching NULL.
+
+#Function 44: insertEndDLL
+
+##Problem Understanding
+ -Input: doubly linked list L, value value
+ -Output: inserts a new node at the end of the list
+
+#Algorithm (insertEndDLL)
+1.Create a new node and assign it the given value.
+2.Set the new node’s next pointer to NULL.
+3.If the list is empty:
+    -Set both head and tail to the new node.
+4.Otherwise:
+    -Set new node’s prev to current tail.
+    -Set current tail’s next to the new node.
+    -Update tail to the new node.
+5.Return success status.
+
+#Function 49: push
+
+##Problem Understanding
+ -Input: stack S, value value
+ -Output: pushes a new value onto the top of the stack
+ 
+#Algorithm (push)
+1.Allocate a new node.
+2.If allocation fails, return -1.
+3.Assign the value to the node.
+4.Set the node’s next to the current top.
+5.Update the stack’s top to the new node.
+6.Return success.
+
+#Function 53: initQueue
+
+##Problem Understanding
+    -Input: queue Q
+    -Output: initializes the queue to an empty state
+
+#Algorithm (initQueue)
+
+1.Check if the queue pointer is valid.
+2.Set front to NULL.
+3.Set rear to NULL.
+4.The queue is now empty and ready for use.
+
+#Function 59: writeRecord
+
+##Problem Understanding
+    -Input: file name filename, pointer to record r
+    -Output: appends the record to the file in binary format
+
+#Algorithm (writeRecord)
+1.Open the file in append-binary mode "ab".
+2.If file opening fails, return -1.
+3.Write the record to the file using fwrite.
+4.If writing fails, close the file and return -1.
+5.Close the file.
+6.Return success.
+
+#Function 64: updateRecord
+
+##Problem Understanding
+    -Input: file name filename, record index index, pointer to new data newData
+    -Output: updates the record at the given index in the binary file
+    
+#Algorithm (updateRecord)
+1.Open the file in read/write binary mode "r+b".
+2.If opening fails, return -1.
+3.Calculate the byte offset: index * sizeof(Record).
+4.Move the file pointer to that position using fseek.
+5.If seeking fails, close the file and return -1.
+6.Write the new record using fwrite.
+7.If writing fails, close the file and return -1.
+8.Close the file.
+9.Return success.
+
+#Function 68: my_strcat
+
+##Problem Understanding
+    -Input: destination string dest, source string src
+    -Output: appends src to the end of dest
+    
+#Algorithm (my_strcat)
+1.Check if either pointer is NULL; if so, return dest.
+2.Traverse dest until reaching the null terminator '\0'.
+3.Starting from that position, copy characters from src.
+4.Continue copying until reaching the null terminator of src.
+5.Add a null terminator at the end of the new string.
+6.Return dest.
+
+#Function 73: reverseString
+
+##Problem Understanding
+    -Input: string s
+    -Output: reverses the string in place
+    
+#Algorithm (reverseString)
+1.Check if the string is NULL.
+2.Find the end of the string manually (no strlen).
+3.Set two pointers:
+    -i at the start (index 0)
+    -j at the last character (before '\0')
+4.Swap characters at i and j.
+5.Increment i, decrement j.
+6.Repeat until i >= j.
+
+#Function 77: removeChar
+
+
+##Problem Understanding
+    -Input: string s, character c
+    -Output: removes all occurrences of c from s in place
+    
+#Algorithm (removeChar)
+1.Check if the string is NULL.
+2.Use two indices: i (read) and j (write).
+3.Traverse the string with i.
+4.If s[i] is not equal to c, copy it to s[j] and increment j.
+5.Always increment i.
+6.After traversal, add '\0' at position j.

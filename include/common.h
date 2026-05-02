@@ -9,36 +9,47 @@
 #define MAX_QUEUE_SIZE  50
 #define MAX_STRING_LEN  256
 
+/* Node for singly linked list */
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+/* Node for doubly linked list */
+typedef struct DNode {
+    int data;
+    struct DNode* next;
+    struct DNode* prev;
+} DNode;
+
 /* Cursor-based singly linked list */
 typedef struct {
-    int data[MAX_LIST_SIZE];
-    int next[MAX_LIST_SIZE];   // next[i] = index of successor, -1 = end
-    int head;                   // index of first element, -1 = empty
+    Node* head;
     int size;
 } ArrayList;
 
-/* Cursor-based doubly linked list */
+/* Doubly linked list with head and tail pointers */
 typedef struct {
-    int data[MAX_LIST_SIZE];
-    int next[MAX_LIST_SIZE];
-    int prev[MAX_LIST_SIZE];
-    int head;
-    int tail;
+    DNode* head;
+    DNode* tail;
     int size;
 } DLL;
 
 /* Array-based Stack */
 typedef struct {
-    int data[MAX_STACK_SIZE];
-    int top;    // index of topmost element, -1 = empty
+    Node* top; // Pointer to the top element
 } Stack;
 
 /* Circular Array Queue */
 typedef struct {
-    int data[MAX_QUEUE_SIZE];
-    int front;  // index of front element
-    int rear;   // index of last element
-    int count;  // number of elements
+    Node* front; // First element
+    Node* rear; // Last element
+    int count;
 } Queue;
+
+/* List structure for singly linked list */
+typedef struct {
+    Node* head;
+} List;
 
 #endif

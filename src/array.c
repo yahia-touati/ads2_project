@@ -396,6 +396,34 @@ int  sumAntiDiagonal(int m[][MAX_COLS], int n)
     }
     return sumAntiDiagonal;
 }
+<<<<<<< HEAD
+=======
+/* Sorts each row of a 2D matrix independently in ascending order */
+void sortRows(int m[][MAX_COLS], int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        // sort row i
+        for (int j = 0; j < cols - 1; j++)
+        {
+            int minIdx = j;
+
+            for (int k = j + 1; k < cols; k++)
+            {
+                if (m[i][k] < m[i][minIdx])
+                {
+                    minIdx = k;
+                }
+            }
+
+            // swap
+            int temp = m[i][j];
+            m[i][j] = m[i][minIdx];
+            m[i][minIdx] = temp;
+        }
+    }
+}
+>>>>>>> 00eb491df79eca42736c23e1d9679e874a9f5375
 /* --- Dynamic Arrays --- */
 
 /* Creates a dynamic array of integers with the specified capacity */
@@ -415,4 +443,29 @@ void fillArray(int* arr, int size) {
     for (int i = 0; i < size; i++) {
         scanf("%d", &arr[i]);
     }
+<<<<<<< HEAD
+=======
+}
+/* Resizes a dynamic array to a new capacity */
+int*  resizeArray(int* arr, int newCapacity)
+{
+    if (newCapacity <= 0) {
+        return NULL; // Return NULL for non-positive new capacity   
+    }
+    int* newarr = (int*)malloc(newCapacity * sizeof(int));
+    if (newarr == NULL) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    for (int i = 0; i < newCapacity; i++) {
+        newarr[i] = arr[i]; 
+    }
+    return newarr;
+}
+/* Memory management */
+void freeArray(int** arr)
+{
+    if (arr == NULL || *arr == NULL) return;
+    free(*arr);
+    *arr = NULL;
+>>>>>>> 00eb491df79eca42736c23e1d9679e874a9f5375
 }
