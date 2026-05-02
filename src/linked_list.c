@@ -78,6 +78,20 @@ void displayList(List* L)
 
     printf("\n");
 }
+void reverseList(List* L)
+{
+    Node* prev = NULL;
+    Node* current = L->head;
+    Node* next = NULL;
+    while(current != NULL)
+    {
+        next = current->next; // sort next node
+        current->next = prev; // reverse link
+        prev = current; // move prev forward
+        current = next; // move current forward
+    }
+    L->head = prev; // update head to new first node
+}
 /* --- Doubly Linked List --- */
 
 /* Inserts a node at the end of a doubly linked list */

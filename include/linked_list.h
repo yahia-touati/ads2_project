@@ -6,6 +6,7 @@
 int insertAtPosition(List* L, int pos, int value);
 void displayList(List* L);
 int deleteBeginning(List* L);
+void reverseList(List* L);
 
 /* --- Doubly Linked List --- */
 int insertEndDLL(DLL* L, int value);
