@@ -78,6 +78,7 @@ void displayList(List* L)
 
     printf("\n");
 }
+/* Reverses the linked list in place */
 void reverseList(List* L)
 {
     Node* prev = NULL;
@@ -91,6 +92,55 @@ void reverseList(List* L)
         current = next; // move current forward
     }
     L->head = prev; // update head to new first node
+}
+
+/* Merges two sorted linked lists into a third one */
+void mergeSortedListe(List *A, List* B, List* result)
+{
+    Node* currentA = A->head;
+    Node* currentB = B->head;
+    Node* taileresult = NULL;
+    if (currentA == NULL) // if A is empty, result is just B
+    {
+        result->head = currentB;
+        return;
+    }
+    else if (currentB ==NULL) // if A is empty, result is just B
+    {
+        result->head = currentA;
+        return;
+    }
+    if (currentA->data <= currentB->data) // initialize result head to smaller first node
+    {
+        result->head = currentA;
+        currentA = currentA->next;
+    }
+    else{ // initialize result head to smaller first node
+        result->head = currentB;
+        currentB = currentB->next;
+    }
+    taileresult = result->head;
+    while (currentA != NULL && currentB != NULL) // merge until one list is exhausted
+    {
+        if (currentA->data <= currentB->data)
+        {
+            taileresult->next = currentA;
+            currentA = currentA->next;
+        }
+        else{
+            taileresult->next = currentB;
+            currentB = currentB->next;
+        }
+        taileresult = taileresult->next;
+    }
+    if (currentA != NULL)
+    {
+        taileresult->next = currentA;
+    }
+    else if (currentB != NULL)
+    {
+        taileresult->next = currentB;
+    }
 }
 /* --- Doubly Linked List --- */
 
@@ -123,5 +173,6 @@ int insertEndDLL(DLL* L, int value)
 
     return 1;
 }
+
 
 
