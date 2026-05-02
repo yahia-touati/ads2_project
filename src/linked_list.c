@@ -45,6 +45,17 @@ int insertAtPosition(List* L, int pos, int value)
 
     return 1;
 }
+/*Deletes the first node of the linked list and returns its value*/
+int deleteBeginning(List* L)
+{
+    if (L == NULL || L->head == NULL)
+        return -1; // indicate failure
+    Node* temp = L->head;
+    int value = temp->data;
+    L->head = L->head->next;
+    free(temp);
+    return value; // return deleted value
+}
 /* Prints all elements of the linked list */
 void displayList(List* L)
 {
