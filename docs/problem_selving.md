@@ -169,11 +169,11 @@
 
 #Function 38: displayList
 
-##Problem Understanding
+## Problem Understanding
  -Input: linked list L
  -Output: prints all elements of the list from head to NULL in order
  
-#Algorithm (displayList)
+# "Algorithm (displayList)
 1.Check if the list is empty (L == NULL). If yes, stop.
 2.Set a pointer current to the head of the list.
 3.Traverse the list while current is not NULL.
@@ -183,13 +183,13 @@
 7.Move to the next node.
 8.End when reaching NULL.
 
-#Function 44: insertEndDLL
+# Function 44: insertEndDLL
 
-##Problem Understanding
+## Problem Understanding
  -Input: doubly linked list L, value value
  -Output: inserts a new node at the end of the list
 
-#Algorithm (insertEndDLL)
+# Algorithm (insertEndDLL)
 1.Create a new node and assign it the given value.
 2.Set the new node’s next pointer to NULL.
 3.If the list is empty:
@@ -199,14 +199,46 @@
     -Set current tail’s next to the new node.
     -Update tail to the new node.
 5.Return success status.
+# Function 45: mergeSortedListe
 
-#Function 49: push
+## ​Problem Understanding (An Example)
+​Input: List *A, List *B (two sorted linked lists), List *result (empty list container).
+​Output: Modifies result to contain all elements from A and B in non-descending order.
+​Key Logic: In-place pointer manipulation (no data copying).
+​Edge cases: One or both input lists are empty (NULL).
 
-##Problem Understanding
+### ​Algorithm
+​Initialize currentA and currentB to the heads of the respective lists.
+​Compare the first nodes of A and B to set the result->head.
+​Use a tailResult pointer to track the last added node in the new sequence.
+​Iterate through both lists using a while loop, attaching the smaller node to tailResult->next and advancing the pointers.
+​Once one list is exhausted, link the remaining part of the other list directly to tailResult->next.
+​Update result->tail to the final node of the merged list.
+
+# Function: deleteByValueDLL
+
+## ​Problem Understanding (An Example)
+​Input: DLL *L (Doubly Linked List), int value (target to remove).
+​Output: Removes the first occurrence of value from the list and frees its memory.
+​Key Logic: Maintaining bi-directional links (prev and next) during removal.
+​Edge cases: Deleting the Head, deleting the Tail, deleting the only node, or value not found.
+
+### ​Algorithm
+​Check if the list L or its head is NULL.
+​Traverse the list starting from head to find the node containing the target value.
+​If found:
+​Handle Previous Link: If the node is not the head, link prev->next to current->next. Otherwise, update L->head.
+​Handle Next Link: If the node is not the tail, link next->prev to current->prev. Otherwise, update L->tail.
+​Ensure the new Head's prev and the new Tail's next are set to NULL if they exist.
+​Use free(current) to release memory and exit the function.
+
+# Function 49: push
+
+## Problem Understanding
  -Input: stack S, value value
  -Output: pushes a new value onto the top of the stack
  
-#Algorithm (push)
+# Algorithm (push)
 1.Allocate a new node.
 2.If allocation fails, return -1.
 3.Assign the value to the node.
@@ -214,22 +246,22 @@
 5.Update the stack’s top to the new node.
 6.Return success.
 
-#Function 53: initQueue
+# Function 53: initQueue
 
-##Problem Understanding
+## Problem Understanding
     -Input: queue Q
     -Output: initializes the queue to an empty state
 
-#Algorithm (initQueue)
+# Algorithm (initQueue)
 
 1.Check if the queue pointer is valid.
 2.Set front to NULL.
 3.Set rear to NULL.
 4.The queue is now empty and ready for use.
 
-#Function 59: writeRecord
+# Function 59: writeRecord
 
-##Problem Understanding
+## Problem Understanding
     -Input: file name filename, pointer to record r
     -Output: appends the record to the file in binary format
 
@@ -241,13 +273,13 @@
 5.Close the file.
 6.Return success.
 
-#Function 64: updateRecord
+# Function 64: updateRecord
 
-##Problem Understanding
+## Problem Understanding
     -Input: file name filename, record index index, pointer to new data newData
     -Output: updates the record at the given index in the binary file
     
-#Algorithm (updateRecord)
+# Algorithm (updateRecord)
 1.Open the file in read/write binary mode "r+b".
 2.If opening fails, return -1.
 3.Calculate the byte offset: index * sizeof(Record).
@@ -258,9 +290,9 @@
 8.Close the file.
 9.Return success.
 
-#Function 68: my_strcat
+# Function 68: my_strcat
 
-##Problem Understanding
+## Problem Understanding
     -Input: destination string dest, source string src
     -Output: appends src to the end of dest
     
@@ -278,7 +310,7 @@
     -Input: string s
     -Output: reverses the string in place
     
-#Algorithm (reverseString)
+ # Algorithm (reverseString)
 1.Check if the string is NULL.
 2.Find the end of the string manually (no strlen).
 3.Set two pointers:
@@ -287,15 +319,15 @@
 4.Swap characters at i and j.
 5.Increment i, decrement j.
 6.Repeat until i >= j.
+ 
+ # #Function 77: removeChar
 
-#Function 77: removeChar
 
-
-##Problem Understanding
+## Problem Understanding
     -Input: string s, character c
     -Output: removes all occurrences of c from s in place
     
-#Algorithm (removeChar)
+# Algorithm (removeChar)
 1.Check if the string is NULL.
 2.Use two indices: i (read) and j (write).
 3.Traverse the string with i.
