@@ -21,3 +21,14 @@ int push(Stack* S, int value)
 
     return 1;
 }
+/* Returns the value at the top of the stack without removing it */
+int pop(Stack* S)
+{
+    if (S == NULL || S->top ==NULL)
+        return -1;
+    Node* temp = S->top;
+    int value = temp->data;
+    S->top = S->top->next;
+    free(temp);
+    return value;
+}
