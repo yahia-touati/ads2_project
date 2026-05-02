@@ -4,5 +4,9 @@
 
 /* --- Queue --- */
 void initQueue(Queue* Q);
+int enqueue(Queue* Q, int value);
+int dequeue(Queue* Q);
+int front(Queue* Q);
+int rear(Queue* Q);
 
 #endif
