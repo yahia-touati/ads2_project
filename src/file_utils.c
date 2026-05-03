@@ -53,7 +53,7 @@ int updateRecord(const char* filename, int index, Record* newData)
     fclose(fp);
     return 1;
 }
-//-- reate a Binary File --//
+//-- create a Binary File --//
 int createBinaryFile(const char* filename){
     FILE *File ; // creating the file where to store the created binary file 
     File = fopen(*filename, "wb") ;  // creates a binary file 
