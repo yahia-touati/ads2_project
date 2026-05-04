@@ -34,3 +34,21 @@ int enqueue(Queue* Q, int value)
     }
     return 1;
 }
+
+/*Removes and returns the value at the front of the queue */
+int front(Queue* Q)
+{
+    // Check if queue is empty
+    if (Q->front == Q->rear)
+        return -1; // sentinel value (error)
+
+    return Q->data[Q->front];  // front is the first valid element
+}
+int rear(Queue* Q)
+{
+    // Check if queue is empty
+    if (Q->front == Q->rear)
+        return -1; // sentinel value (error)
+
+    return Q->data[(Q->rear - 1 + MAX) % MAX];  // rear is the last valid element, so we need to adjust for the circular nature
+}

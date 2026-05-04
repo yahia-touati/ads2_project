@@ -32,3 +32,13 @@ int pop(Stack* S)
     free(temp);
     return value;
 }
+
+/* Returns the value at the top of the stack without removing it */
+int peek(Stack* S)
+{
+    if (S->top == NULL) {
+        printf("Stack is empty.\n");
+        return -1; // Return -1 to indicate stack is empty
+    }
+    return S->data[S->top];
+}

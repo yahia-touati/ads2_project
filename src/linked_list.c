@@ -5,6 +5,13 @@
 
 /* --- Singly Linked List --- */
 
+/* Initializes an empty linked list */
+void initList(List* L)
+{
+    L->head = NULL;
+    L->size = 0;
+}
+
 /* Inserts a node at a given position in a linked list */
 int insertAtPosition(List* L, int pos, int value)
 {
@@ -56,6 +63,44 @@ int deleteBeginning(List* L)
     free(temp);
     return value; // return deleted value
 }
+
+/* Deletes the last node of the linked list and returns its value */
+int deleteEnd(List* L)
+{
+    // Case 1: empty list
+    if (L->head == NULL)
+        return -1; // or any error value
+
+    // Case 2: only one node
+    if (L->head->next == NULL)
+    {
+        int value = L->head->data;
+        free(L->head);
+        L->head = NULL;
+        L->size--;
+        return value;   // return deleted value
+    }
+
+    // Case 3: more than one node
+    Node* current = L->head;
+
+    // Traverse until current->next->next == NULL
+    while (current->next->next != NULL)
+    {
+        current = current->next;
+    }
+
+    // current is now the node before the last
+    Node* temp = current->next;
+    int value = temp->data;
+
+    current->next = NULL; // unlink last node
+    free(temp);           // free memory
+    L->size--;
+
+    return value;    // return deleted value
+}
+
 /* Prints all elements of the linked list */
 void displayList(List* L)
 {
@@ -92,6 +137,40 @@ void reverseList(List* L)
         current = next; // move current forward
     }
     L->head = prev; // update head to new first node
+}
+
+/* Sorts the linked list using bubble sort */
+void sortListBubble(List* L)
+{
+    // If list is empty or has one element → already sorted
+    if (L->head == NULL || L->head->next == NULL)
+        return;
+
+    int swapped;
+    Node* ptr1;
+    Node* lptr = NULL; // marks the sorted part at the end
+
+    do
+    {
+        swapped = 0;
+        ptr1 = L->head;
+
+        while (ptr1->next != lptr)
+        {
+            if (ptr1->data > ptr1->next->data)
+            {
+                // swap data
+                int temp = ptr1->data;
+                ptr1->data = ptr1->next->data;
+                ptr1->next->data = temp;
+
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+
+        lptr = ptr1; // last element is now sorted
+    } while (swapped);
 }
 
 /* Merges two sorted linked lists into a third one */
@@ -207,6 +286,20 @@ void deleteByValueDLL(DLL *L, int value)
             return;
         }
     }
+}
+
+/* Displays the elements of a doubly linked list from head to tail */
+void displayForward(DLL* L)
+{
+    Node* current = L->head;
+
+    while (current != NULL)
+    {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+
+    printf("\n");
 }
 
 
