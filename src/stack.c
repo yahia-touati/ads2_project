@@ -42,3 +42,8 @@ int peek(Stack* S)
     }
     return S->data[S->top];
 }
+
+/* Function to check if the stack is empty */
+int isEmpty(Stack* S) {
+    return S->top == NULL; // Returns 1 if the stack is empty, 0 otherwise
+}

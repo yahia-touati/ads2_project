@@ -44,6 +44,21 @@ int countRecords(const char* filename)
     return size / sizeof(Record);
 }
 
+/* Function to append a record to a file */
+int appendRecord(const char* filename, Record* r) {
+    FILE* f = fopen(filename, "ab"); // Open the file in binary append mode
+
+    if (f == NULL) {
+        return -1; // Failed to open the file
+    }
+
+    fwrite(r, sizeof(Record), 1, f); // Write the record to the file
+
+    fclose(f); // Close the file
+    return 1; // Successfully appended the record
+}
+
+
 /* Updates a record at a specific index in a binary file */
 int updateRecord(const char* filename, int index, Record* newData)
 {

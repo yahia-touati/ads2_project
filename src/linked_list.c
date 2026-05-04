@@ -12,6 +12,21 @@ void initList(List* L)
     L->size = 0;
 }
 
+/* Function to insert a node at the beginning of a linked list */
+int insertBeginning(List* L, int value) {
+    Node* newNode = (Node*) malloc(sizeof(Node)); // Allocate memory for the new node
+
+    if (newNode == NULL) {
+        return -1; // Failed to allocate memory
+    }
+
+    newNode->data = value; // Set the data of the new node
+    newNode->next = L->head; // Point the new node's next to the current head of the list
+    L->head = newNode; // Update the head of the list to the new node
+
+    return 1; // Successfully inserted at the beginning
+}
+
 /* Inserts a node at a given position in a linked list */
 int insertAtPosition(List* L, int pos, int value)
 {
@@ -99,6 +114,32 @@ int deleteEnd(List* L)
     L->size--;
 
     return value;    // return deleted value
+}
+
+/* Function to delete a node by value from a linked list */
+int deleteByValue(List* L, int value) {
+    Node* current = L->head; // Start from the head of the list
+    Node* prev = NULL; // To keep track of the previous node
+
+    while (current != NULL && current->data != value) {
+        prev = current; // Move prev to current
+        current = current->next; // Move to the next node
+    }
+
+    if (current == NULL) {
+        return 0; // Value not found in the list
+    }
+
+    // Value found, delete the node
+    if (prev == NULL) {
+        L->head = current->next; // Deleting the head node
+    } 
+    else {
+        prev->next = current->next; // Bypass the current node
+    }
+
+    free(current);
+    return 1; // Successfully deleted the node with the given value
 }
 
 /* Prints all elements of the linked list */
@@ -222,6 +263,13 @@ void mergeSortedListe(List *A, List* B, List* result)
     }
 }
 /* --- Doubly Linked List --- */
+
+/* Function to initialize a doubly linked list */
+void initListDLL(DLL* L) {
+    L->head = NULL; // Initialize head pointer to NULL
+    L->tail = NULL; // Initialize tail pointer to NULL
+    L->size = 0; // Initialize size to 0
+}
 
 /* Inserts a node at the end of a doubly linked list */
 int insertEndDLL(DLL* L, int value)
