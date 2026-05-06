@@ -40,7 +40,7 @@ int peek(Stack* S)
         printf("Stack is empty.\n");
         return -1; // Return -1 to indicate stack is empty
     }
-    return S->data[S->top];
+    return S->top->data;
 }
 
 /* Function to check if the stack is empty */

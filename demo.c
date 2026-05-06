@@ -26,9 +26,11 @@ int main() {
                 break;
             /*case 2: Linked_ListesMenu(); break;
             case 3: StacksMenu(); break;
-            case 4: QueuesMenu(); break;
-            case 5: File_HandlingMenu(); break;
-            case 6: String_UtilsMenu(); break;*/
+            case 4: QueuesMenu(); break;*/
+            case 6: 
+                File_HandlingMenu();
+                break;
+            /*case 6: String_UtilsMenu(); break;*/
             default:
                 printf("Invalid choice! Please try again.\n"); 
         }

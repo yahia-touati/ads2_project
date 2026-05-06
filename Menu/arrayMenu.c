@@ -10,17 +10,11 @@ void arrayMenu(int arr[], int *size) {
     int choice, value, index;
     do {
         printf("\n=== ARRAY MENU ===\n");
-<<<<<<< HEAD
-        printf("1. Insert element\t2. Delete element\t"
-               "3. Search\n4. Sort\t5. Display\t6. Enter values\n"
-               "7. Max Number\t8. Min number\t0. Back\nChoice: ");
-=======
         printf("1. Entre values\t\t2. Initialize Sire\t3. Dispaly\n");
         printf("4. Insert element\t5. Delete element\t6. Search\n");
         printf("7. Sort\t\t\t8. Max Number\t\t9. Min number\n");
         printf("10. Sum\t\t\t11. Average\t\t12. Reverse\n");
         printf("13. Rotate left\t\t14. Dynamic Array\t0. Back\nChoice: ");
->>>>>>> e47c65af04747d2bb392316b6827d0b9d8c14a88
         scanf("%d", &choice);
         switch(choice) {
             case 1:
@@ -81,7 +75,6 @@ void arrayMenu(int arr[], int *size) {
         }
     } while (choice != 0);
 }
-<<<<<<< HEAD
 void MatricMenu(int a[][MAX_COLS], int *cols, int *rows)
 {
     int choice;
@@ -102,10 +95,8 @@ void MatricMenu(int a[][MAX_COLS], int *cols, int *rows)
     }while (choice != 0);
 
 }
-void searchMenu(int arr[], int size)
-=======
+void searchMenu(int arr[], int size);
 void DynamicArray(int arr[], int size)
->>>>>>> e47c65af04747d2bb392316b6827d0b9d8c14a88
 {
     int* d_arr = NULL;
     int capacity = 0;

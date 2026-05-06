@@ -8,7 +8,7 @@ typedef struct {
     float score;
     char  category[20];
 } Record;
-
+void File_HandlingMenu();
 int createBinaryFile(const char* filename);
 int writeRecord(const char* filename, Record* r);
 int readRecord(const char* filename, int index, Record* r);

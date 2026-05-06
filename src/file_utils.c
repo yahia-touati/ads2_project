@@ -6,8 +6,8 @@
 //-- create a Binary File --//
 int createBinaryFile(const char* filename){
     FILE *File ; // creating the file where to store the created binary file 
-    File = fopen(*filename, "wb") ;  // creates a binary file 
-    if (*filename == NULL)
+    File = fopen(filename, "wb") ;  // creates a binary file 
+    if (filename == NULL)
     {
         return -1; // return -1 when fails 
     }

@@ -303,8 +303,9 @@ int insertEndDLL(DLL* L, int value)
 /* Deletes a node with the specified value from a doubly linked list */
 int  deleteByValueDLL(DLL *L, int value)
 {
-    if (L == NULL || L->head == NULL)
-        return -1 -1;
+    if (L == NULL || L->head == NULL){
+        return -1;
+    }
     DNode* current = L->head;
     while (current != NULL)
     {
@@ -334,11 +335,12 @@ int  deleteByValueDLL(DLL *L, int value)
             return value;
         }
     }
+    return -1; // value not found
 }
 /* Displays the elements of a doubly linked list from head to tail */
 void displayForward(DLL* L)
 {
-    Node* current = L->head;
+    DNode* current = L->head;
 
     while (current != NULL)
     {

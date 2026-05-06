@@ -42,7 +42,7 @@ int front(Queue* Q)
     if (Q->front == Q->rear)
         return -1; // sentinel value (error)
 
-    return Q->data[Q->front];  // front is the first valid element
+    return Q->front->data;  // front is the first valid element
 }
 int rear(Queue* Q)
 {
@@ -50,5 +50,5 @@ int rear(Queue* Q)
     if (Q->front == Q->rear)
         return -1; // sentinel value (error)
 
-    return Q->data[(Q->rear - 1 + MAX) % MAX];  // rear is the last valid element, so we need to adjust for the circular nature
+    return Q->rear->data;  // rear is the last valid element, so we need to adjust for the circular nature
 }
