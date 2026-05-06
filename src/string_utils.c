@@ -42,6 +42,16 @@ char* my_strcat(char* dest, const char* src)
 
     return dest;
 }
+/* Comarison of words using character case */
+int my_strcmp(const char* a, const char* b)
+{
+    int i = 0;
+    while(a[i] == b[i] && a[i] != '\0')
+    {
+        i++;
+    }
+    return (unsigned char)a[i] - (unsigned char)b[i];
+}
 
 /* A simple implementation of toUpperCase */
 void toUpperCase(char* s) { // s is the input string that we want to convert to uppercase
@@ -158,7 +168,7 @@ int isPalindrome(const char* s){
             return 0;// returning 0 in case they aint equal 
         }
         i++ ; 
-        j -- .
+        j --;
      }
       return 1 ; 
 }
