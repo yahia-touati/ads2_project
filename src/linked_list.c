@@ -335,6 +335,19 @@ int  deleteByValueDLL(DLL *L, int value)
         }
     }
 }
+/* Displays the elements of a doubly linked list from head to tail */
+void displayForward(DLL* L)
+{
+    Node* current = L->head;
+
+    while (current != NULL)
+    {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+
+    printf("\n");
+}
 
 
 
