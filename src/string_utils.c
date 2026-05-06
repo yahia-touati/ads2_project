@@ -101,6 +101,19 @@ void reverseString(char* s)
         j--;
     }
 }
+/* Count Vowels */
+int countVowels(const char* s) {
+    int i = 0;
+    int count = 0;
+    while (s[i] != '\0') {
+        if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' ||
+            s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U') {
+            count++;
+        }
+        i++;
+    }
+    return count;
+}
 
 /* A simple implementation of countWords */
 int countWords(const char* s) { // s is the input string for which we want to count the number of words
@@ -161,4 +174,30 @@ void removeChar(char* s, char c)
 
     s[j] = '\0';
 }
-
+/* Removes all spaces from a string */
+void removeSpaces(char* s)
+{
+    int i = 0, j = 0;
+    while (s[i] != '\0')
+    {
+        if (s[i] != ' ')
+        {
+            s[j] = s[i];
+            j++;
+        }
+        i++;
+    }
+    s[j] = '\0';
+} 
+/* Compares two strings ignoring case */
+int compareIgnoreCase(const char* a, const char* b)
+{
+    while (*a != '\0' && *b != '\0')
+    {
+        if (tolower(*a) != tolower(*b))
+            return 0;
+        a++;
+        b++;
+    }
+    return 1;
+}
