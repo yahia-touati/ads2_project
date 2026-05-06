@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 /* Concatenates src to the end of dest */
 char* my_strcat(char* dest, const char* src)
@@ -28,7 +29,16 @@ char* my_strcat(char* dest, const char* src)
 
     return dest;
 }
-
+/* Comarison of words using character case */
+int my_strcmp(const char* a, const char* b)
+{
+    int i = 0;
+    while(a[i] == b[i] && a[i] != '\0')
+    {
+        i++;
+    }
+    return (unsigned char)a[i] - (unsigned char)b[i];
+}
 /* Reverses a string in place using two-pointer swapping */
 void reverseString(char* s)
 {
@@ -107,7 +117,7 @@ int isPalindrome(const char* s){
             return 0;// returning 0 in case they aint equal 
         }
         i++ ; 
-        j -- .
+        j-- ;
      }
       return 1 ; 
 }

@@ -50,6 +50,7 @@ typedef struct {
 /* List structure for singly linked list */
 typedef struct {
     Node* head;
+    int size;
 } List;
 
 #endif

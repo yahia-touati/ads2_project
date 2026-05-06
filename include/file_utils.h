@@ -10,6 +10,11 @@ typedef struct {
 } Record;
 
 int writeRecord(const char* filename, Record* r);
+int readRecord(const char* filename, int index, Record* r);
+int countRecord(const char* filename);
+int appendRecord(const char* filename, Record* r);
+int searchRecord(const char* filename, int id, Record* r);
 int updateRecord(const char* filename, int index, Record* newData);
+int copyBinaryFile(const char* src, const char* dest);
 
 #endif
