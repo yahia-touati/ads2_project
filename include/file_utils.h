@@ -9,9 +9,10 @@ typedef struct {
     char  category[20];
 } Record;
 
+int createBinaryFile(const char* filename);
 int writeRecord(const char* filename, Record* r);
 int readRecord(const char* filename, int index, Record* r);
-int countRecord(const char* filename);
+int countRecords(const char* filename);
 int appendRecord(const char* filename, Record* r);
 int searchRecord(const char* filename, int id, Record* r);
 int updateRecord(const char* filename, int index, Record* newData);
