@@ -212,6 +212,8 @@ void SortMenu(int arr[], int size)
                 printArray(arr, size);
                 break;
             case 2:
+                selectionSort(arr, size);
+                printArray(arr, size);
                 break;
             case 3:
                 insertionSort(arr, size);

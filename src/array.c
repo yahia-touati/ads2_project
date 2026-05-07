@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
 /* Reading array values from the user */
 void ReadArray(int arr[], int *size)
 {
@@ -96,6 +97,22 @@ int binarySearch(int arr[], int size, int value)
         }
     } 
     return -1;
+}
+/* Selection Sort */
+void selectionSort(int arr[], int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        int minIndex = i;
+        for (int j = i + 1; j < size; j++)
+        {
+            if (arr[j] < arr[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+        swap(&arr[i], &arr[minIndex]);
+    }
 }
 /* Bubble Sort */
 void  bubbleSort(int arr[], int size){
