@@ -10,7 +10,7 @@ void File_HandlingMenu()
     do {
         printf("\n=== File Handling Menu ===\n");
         printf("1. Create file\t2. Write to file\t3. Read from file\n");
-        printf("4. Count records\t5. Append record\t6. Search record\n");
+        printf("4. voidCount records\t5. Append record\t6. Search record\n");
         printf("7. Update record\t8. Copy file\t0. Back\nChoice: ");
         scanf("%d", &choice);
         switch (choice)

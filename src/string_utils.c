@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
 /* A simple implementation of strcpy */
 char* my_strcpy(char* dest, const char* src) { // dest is the destination string, src is the source string

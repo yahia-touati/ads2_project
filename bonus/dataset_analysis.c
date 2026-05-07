@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/Menu.h"
+#include "../include/file_utils.h"
 
-typedef struct {
-    int id;
-    char name[50];
-    float score;
-    char category[20];
-} Record;
 
 /* Calculates the average of a specific field in the dataset */
 float averageByField(Record arr[], int count)
