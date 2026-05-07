@@ -2,21 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <string.h>
-#include <ctype.h>
 
-/* A simple implementation of strcpy */
-char* my_strcpy(char* dest, const char* src) { // dest is the destination string, src is the source string
-    int i = 0; // Initialize index to 0
-
-    while(src[i] != '\0') { // Loop until the end of the source string is reached
-        dest[i] = src[i]; // Copy the character from source to destination
-        i++; // Move to the next character
+/* Returns the length of a string */
+int my_strlen(const char* s)
+{
+    int i = 0;
+    while (s[i] != '\0')  // Loop until we reach the null terminator
+    {
+        i++;
     }
-
-    dest[i] = '\0'; // Null-terminate the destination string after copying
-
-    return dest; // Return the destination string
+    return i;   // Return the length of the string
 }
 
 /* Concatenates src to the end of dest */
@@ -44,36 +39,20 @@ char* my_strcat(char* dest, const char* src)
 
     return dest;
 }
-/* Comarison of words using character case */
+
+/* Compares two strings lexicographically */
 int my_strcmp(const char* a, const char* b)
 {
-    int i = 0;
-    while(a[i] == b[i] && a[i] != '\0')
+int i = 0;
+while(a[i] != '\0' && b[i] != '\0') // Loop until the end of either string
+{
+    if (a[i] != b[i]) // If characters differ, return the difference
     {
-        i++;
+        return a[i] - b[i]; // Return the difference of the ASCII values
     }
-    return (unsigned char)a[i] - (unsigned char)b[i];
+    i++;
 }
-
-/* A simple implementation of toUpperCase */
-void toUpperCase(char* s) { // s is the input string that we want to convert to uppercase
-    int i = 0; // Initialize index to 0
-
-    while(s[i] != '\0') { // Loop until the end of the string is reached
-        if(s[i] >= 'a' && s[i] <= 'z') { // Check if the character is a lowercase letter
-            s[i] = s[i] - 32; // Convert lowercase to uppercase
-        }
-        i++; // Move to the next character
-    }
-}
-void toLowerCase(char* s){
-     while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
-     {
-        if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
-            *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
-        }
-        s ++ ; // adding by one 
-     } 
+return a[i] - b[i]; // If we reached the end of one string, return the difference (handles cases where one string is a prefix of the other)
 }
 
 /* Reverses a string in place using two-pointer swapping */
@@ -102,57 +81,22 @@ void reverseString(char* s)
         j--;
     }
 }
-/* Count Vowels */
-int countVowels(const char* s) {
-    int i = 0;
+
+/* Counts the number of vowels in a string */
+int countVowels(const char* s)
+{
     int count = 0;
-    while (s[i] != '\0') {
-        if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' ||
-            s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U') {
-            count++;
+    int i = 0;
+    while (s[i] != '\0')  // Loop until we reach the null terminator
+    {
+        char c = tolower(s[i]);  // Convert character to lowercase for case-insensitive comparison
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')  // Check if the character is a vowel
+        {
+            count++;  // Increment the vowel count
         }
         i++;
     }
-    return count;
-}
-
-/* A simple implementation of countWords */
-int countWords(const char* s) { // s is the input string for which we want to count the number of words
-    int i = 0; // Initialize index to 0
-    int count = 0; // Initialize word count to 0
-    int inWord = 0; // Flag to indicate whether we are currently in a word (1) or not (0)
-
-    while(s[i] != '\0') { // Loop until the end of the string is reached
-
-        if(s[i] != ' ' && s[i] != '\t' && s[i] != '\n') { // Check if the current character is not a whitespace character (space, tab, or newline)
-
-            if(inWord == 0) { // If we are not currently in a word, this means we have found the start of a new word
-                count++; // Increment the word count
-                inWord = 1; // Set the inWord flag to 1 to indicate that we are now in a word
-            }
-
-        } else { // If the current character is a whitespace character, this means we have reached the end of a word (if we were in one)
-            inWord = 0; // Set the inWord flag to 0 to indicate that we are no longer in a word
-        }
-
-        i++; // Move to the next character
-    }
-
-    return count; // Return the total word count
-}
-/* -- modifing upper-to-lower case 
-   -- Palindrome */
-int isPalindrome(const char* s){
-     int i = 0 , j = strlen(s) - 1 ; // creating 2 intgers one at the begening and on by the end of the char
-     while (i < j) // to make sure we covered all the string without passing throgh all of it 
-     {
-        if(s[i] != s [j]){ // comparing 
-            return 0;// returning 0 in case they aint equal 
-        }
-        i++ ; 
-        j --;
-     }
-      return 1 ; 
+    return count;  // Return the total count of vowels
 }
 
 /* Removes all occurrences of a character from a string */
@@ -174,31 +118,57 @@ void removeChar(char* s, char c)
     }
 
     s[j] = '\0';
+}// -- Copy each character from src to dest until and including '\0'. Return dest. The destination buffer must be large enough. -- //
+char* my_strcpy(char* dest, const char* src){
+    char* svd_dest = dest;
+     while (*src != '\0'){ // starting a while loop that ends as soon as the source reaches its end 
+         *dest = *src ; // coping the char from the source to destination 
+         dest ++ ;
+         src ++ ; 
+         // adding +1 for both  the source and the destination to move a single step
+     }
+     *dest = '\0' ; 
+     // adding the character constant  
+     return svd_dest ;
 }
-/* Removes all spaces from a string */
-void removeSpaces(char* s)
-{
-    int i = 0, j = 0;
-    while (s[i] != '\0')
-    {
-        if (s[i] != ' ')
-        {
-            s[j] = s[i];
-            j++;
+// -- modifing upper-to-lower case 
+void toLowerCase(char* s){
+     while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
+     {
+        if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
+            *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
         }
-        i++;
-    }
-    s[j] = '\0';
-} 
-/* Compares two strings ignoring case */
-int compareIgnoreCase(const char* a, const char* b)
-{
-    while (*a != '\0' && *b != '\0')
-    {
-        if (tolower(*a) != tolower(*b))
-            return 0;
-        a++;
-        b++;
-    }
-    return 1;
+        s ++ ; // adding by one 
+     } 
 }
+// -- Palindrome
+int isPalindrome(const char* s){
+     int i = 0 , j = strlen(s) -1 ; // creating 2 intgers one at the begening and on by the end of the char
+     while (i < j) // to make sure we covered all the string without passing throgh all of it 
+     {
+        if(s[i] != s [j]){ // comparing 
+            return 0;// returning 0 in case they aint equal 
+        }
+        i++ ; 
+        j -- .
+     }
+      return 1 ; 
+}
+
+/* Extracts a substring from src starting at index start with length len and stores it in dest */
+void substring(const char* src, int start, int len, char* dest)
+{
+    int i;
+    int srclen =strlen(src); // Get the length of the source string
+    if (start < 0 || start + len > srclen) // Check for valid start and length
+    {
+        dest[0] = '\0'; // If invalid, return an empty string
+        return;
+    }
+    for (i = 0; i < len; i++) // Copy the substring to the destination
+    {
+        dest[i] = src[start + i];
+    }
+    dest[len] = '\0'; // Null-terminate the destination string
+}
+
