@@ -6,7 +6,9 @@
 
 void File_HandlingMenu()
 {
-    int choice;
+    int choice, id, index;
+        Record r;
+        char filename[MAX_STRING_LEN];
     do {
         printf("\n=== File Handling Menu ===\n");
         printf("1. Create file\t2. Write to file\t3. Read from file\n");
@@ -15,8 +17,6 @@ void File_HandlingMenu()
         scanf("%d", &choice);
         switch (choice)
         { 
-            char filename[MAX_STRING_LEN];
-            Record r;
             case 1:
                 printf("Enter the filename to create: ");
                 scanf("%s", filename);
@@ -39,7 +39,6 @@ void File_HandlingMenu()
                 printf("Enter filename: ");
                 scanf("%s", filename);
                 printf("Entre index: ");
-                int index;
                 scanf("%d", &index);
                 readRecord(filename, index, &r);
                 printf("ID: %d\nName: %s\nScore: %.2f\nCategory: %s\n", r.id, r.name, r.score, r.category);
@@ -62,27 +61,58 @@ void File_HandlingMenu()
                 scanf("%s", r.category);
                 appendRecord(filename, &r);
                 break;
-           /* case 6:
+            case 6:
                 printf("Enter filename: ");
                 scanf("%s", filename);
+                printf("Enter id to search: ");
+                scanf("%d", &id);
+                if (searchRecord(filename, id, &r) == 1)
+                {
+                    printf("Record found:\nID: %d\nName: %s\nScore: %.2f\nCategory: %s\n", r.id, r.name, r.score, r.category);
+                }
+                else
+                {
+                    printf("Record not found.\n");
+                }
                 
                 break;
             case 7:
                 printf("Enter filename: ");
                 scanf("%s", filename);
                 printf("Enter id to update: ");
-                int id;
                 scanf("%d", &id);
-                printf("Enter new name: ");
-                scanf("%s", r.name);
-                printf("Enter new score: ");
-                scanf("%f", &r.score);
-                printf("Enter new category: ");
-                scanf("%s", r.category);
-                
+                index = searchRecord(filename, id, &r);
+                if (index != -1)
+                {
+                    printf("Current Record:\nID: %d\nName: %s\nScore: %.2f\nCategory: %s\n", r.id, r.name, r.score, r.category);
+                    printf("Enter new name: ");
+                    scanf("%s", r.name);
+                    printf("Enter new score: ");
+                    scanf("%f", &r.score);
+                    printf("Enter new category: ");
+                    scanf("%s", r.category);
+                    if (updateRecord(filename, index, &r) == 1)
+                        printf("Record updated successfully.\n");
+                    else
+                        printf("Error updating record.\n");
+                }
+                else
+                {
+                    printf("Record not found.\n");
+                }  
                 break;
             case 8:
-                break;*/
+                printf("Enter source filename: ");
+                scanf("%s", filename);
+                char dest[MAX_STRING_LEN];
+                printf("Enter destination filename: ");
+                scanf("%s", dest);
+                if (copyBinaryFile(filename, dest) == 1)
+                    printf("File copied successfully.\n");
+                else
+                    printf("Error copying file.\n");
+
+                break;
             default:
                 printf("Invalid choice! Please try again.\n");  
         }

@@ -95,6 +95,27 @@ int appendRecord(const char* filename, Record* r) {
     fclose(f); // Close the file
     return 1; // Successfully appended the record
 }
+/* Searches for a record in a binary file */
+int searchRecord(const char* filename, int id, Record* r)
+{
+    FILE* fp = fopen(filename, "rb");
+    if (fp == NULL)
+        return -1; // error opening file
+
+    Record temp;
+    while (fread(&temp, sizeof(Record), 1, fp) == 1)
+    {
+        if (temp.id == id)
+        {
+            *r = temp; // copy found record to output parameter
+            fclose(fp);
+            return 1; // record found
+        }
+    }
+
+    fclose(fp);
+    return 0; // record not found
+}
 
 /* Updates a record at a specific index in a binary file */
 int updateRecord(const char* filename, int index, Record* newData)
@@ -124,8 +145,8 @@ int updateRecord(const char* filename, int index, Record* newData)
     fclose(fp);
     return 1;
 }
-/**/
-int copyFinaryFile(const char* src, const char* dest)
+/* Copies a binary file */
+int copyBinaryFile(const char* src, const char* dest)
 {
     FILE* f_src = fopen(src, "rb");
 
@@ -148,5 +169,5 @@ int copyFinaryFile(const char* src, const char* dest)
     }
     fclose(f_src);
     fclose(f_dest);
-    return 0;
+    return 1;
 }
