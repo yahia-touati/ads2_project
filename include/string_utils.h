@@ -8,7 +8,7 @@ char* my_strncpy(char* dest, const char* src, int n);//
 char* my_strcat(char* dest, const char* src);
 int my_strcmp(const char* a, const char* b);
 int my_strncmp(const char* a, const char* b, int n); //
-void toUpperCase(char* s);
+void toUpperCase(char* s); 
 void toLowerCase(char* s);
 void reverseString(char* s);
 int countVowels(const char* s);

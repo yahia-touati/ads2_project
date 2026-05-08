@@ -66,6 +66,22 @@ while(a[i] != '\0' && b[i] != '\0') // Loop until the end of either string
 }
 return a[i] - b[i]; // If we reached the end of one string, return the difference (handles cases where one string is a prefix of the other)
 }
+/**/
+int my_strncmp(const char* a, const char* b, int n)
+{
+    if (n <= 0) return -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] != b[i])
+        {
+            return (unsigned char)a[i] - (unsigned char)b[i];
+        }
+        if (a[i] == '\0'){
+            break;
+        }
+    }
+    return 0;
+}
 
 /* A simple implementation of toUpperCase */
 void toUpperCase(char* s) { // s is the input string that we want to convert to uppercase
@@ -83,7 +99,7 @@ void toUpperCase(char* s) { // s is the input string that we want to convert to 
 void toLowerCase(char* s){
      while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
      {
-        if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
+        if (*s >= 'A' && *s <= 'Z'){ // cheacking whiether *s is between A-Z
             *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
         }
         s++ ; // adding by one 
@@ -166,7 +182,7 @@ int isPalindrome(const char* s){
             return 0;// returning 0 in case they aint equal 
         }
         i++ ; 
-        j --;
+        j--;
      }
       return 1 ; 
 }
@@ -198,7 +214,7 @@ void removeChar(char* s, char c)
 void substring(const char* src, int start, int len, char* dest)
 {
     int i;
-    int srclen =my_strlen(src); // Get the length of the source string
+    int srclen = my_strlen(src); // Get the length of the source string
     if (start < 0 || start + len > srclen) // Check for valid start and length
     {
         dest[0] = '\0'; // If invalid, return an empty string

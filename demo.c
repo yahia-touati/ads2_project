@@ -30,7 +30,9 @@ int main() {
             case 6: 
                 File_HandlingMenu();
                 break;
-            /*case 6: String_UtilsMenu(); break;*/
+            case 7: 
+                String_UtilsMenu(); 
+                break;
             default:
                 printf("Invalid choice! Please try again.\n"); 
         }
