@@ -67,6 +67,18 @@ while(a[i] != '\0' && b[i] != '\0') // Loop until the end of either string
 return a[i] - b[i]; // If we reached the end of one string, return the difference (handles cases where one string is a prefix of the other)
 }
 
+/* A simple implementation of toUpperCase */
+void toUpperCase(char* s) { // s is the input string that we want to convert to uppercase
+    int i = 0; // Initialize index to 0
+
+    while(s[i] != '\0') { // Loop until the end of the string is reached
+        if(s[i] >= 'a' && s[i] <= 'z') { // Check if the character is a lowercase letter
+            s[i] = s[i] - 32; // Convert lowercase to uppercase
+        }
+        i++; // Move to the next character
+    }
+}
+
 // -- modifing upper-to-lower case 
 void toLowerCase(char* s){
      while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
@@ -74,7 +86,7 @@ void toLowerCase(char* s){
         if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
             *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
         }
-        s ++ ; // adding by one 
+        s++ ; // adding by one 
      } 
 }
 /* Reverses a string in place using two-pointer swapping */
@@ -120,7 +132,30 @@ int countVowels(const char* s)
     }
     return count;  // Return the total count of vowels
 }
+/* Counts the number of words in a string */
+int countWords(const char* s) { // s is the input string for which we want to count the number of words
+    int i = 0; // Initialize index to 0
+    int count = 0; // Initialize word count to 0
+    int inWord = 0; // Flag to indicate whether we are currently in a word (1) or not (0)
 
+    while(s[i] != '\0') { // Loop until the end of the string is reached
+
+        if(s[i] != ' ' && s[i] != '\t' && s[i] != '\n') { // Check if the current character is not a whitespace character (space, tab, or newline)
+
+            if(inWord == 0) { // If we are not currently in a word, this means we have found the start of a new word
+                count++; // Increment the word count
+                inWord = 1; // Set the inWord flag to 1 to indicate that we are now in a word
+            }
+
+        } else { // If the current character is a whitespace character, this means we have reached the end of a word (if we were in one)
+            inWord = 0; // Set the inWord flag to 0 to indicate that we are no longer in a word
+        }
+
+        i++; // Move to the next character
+    }
+
+    return count; // Return the total word count
+}
 
 // -- Palindrome
 int isPalindrome(const char* s){
@@ -135,6 +170,8 @@ int isPalindrome(const char* s){
      }
       return 1 ; 
 }
+
+
 /* Removes all occurrences of a character from a string */
 void removeChar(char* s, char c)
 {
