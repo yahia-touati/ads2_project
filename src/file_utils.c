@@ -42,27 +42,28 @@ int readRecord(const char* filename, int index, Record* r)
 {
     FILE* fp = fopen(filename, "rb");
     if (fp == NULL)
-    {
-        return -1;
-    }
+        return -1; // error opening file
+    fseek(fp, 0, SEEK_END);
+    long fileSize = ftell(fp);
     long offset = (long)index * sizeof(Record);
-    if (index < 0)
+
+    if (offset < 0 || offset >= fileSize)
     {
         fclose(fp);
-        return -1;
-    } 
-    if (fseek(fp, offset, SEEK_SET) != 0)
-    {
-        fclose(fp);
-        return -1;
+        return -1; // index out of bounds
     }
-    if (fread(r, sizeof(Record), 1, fp) != 1)
+    if(fseek(fp, offset, SEEK_SET) != 0)
     {
         fclose(fp);
-        return -1;
+        return -1; // error seeking to position
     }
+    size_t itemsRead = fread(r, sizeof(Record), 1, fp);
     fclose(fp);
-    return 0;
+    if (itemsRead != 1)
+    {
+        return -1; // error reading record
+    }
+    return 1; // success
 }
  /*Reads a record at a specific index from a binary file */
 int countRecords(const char* filename)

@@ -150,7 +150,7 @@
 6.Repeat until the entire row is sorted.
 7.Move to the next row and repeat the process.
 
-#Function 33: insertAtPosition
+# Function 33: insertAtPosition
 
 ##Problem Understanding
  -Input: linked list L, position pos, value value
@@ -167,7 +167,7 @@
 6.Link the new node between the current node and its next node.
 7.Return success.
 
-#Function 38: displayList
+# Function 38: displayList
 
 ## Problem Understanding
  -Input: linked list L

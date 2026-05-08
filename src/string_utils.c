@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 /* Returns the length of a string */
 int my_strlen(const char* s)
@@ -12,6 +13,17 @@ int my_strlen(const char* s)
         i++;
     }
     return i;   // Return the length of the string
+}
+/* A simple implementation of strcpy */
+char* my_strcpy(char* dest, const char* src) { // dest is the destination string, src is the source string
+    int i = 0; // Initialize index to 0
+
+    while(src[i] != '\0') { // Loop until the end of the source string is reached
+        dest[i] = src[i]; // Copy the character from source to destination
+        i++; // Move to the next character
+    }
+    dest[i] = '\0'; // Add null terminator at the end of the destination
+    return dest; // Return the destination string
 }
 
 /* Concatenates src to the end of dest */
@@ -55,6 +67,16 @@ while(a[i] != '\0' && b[i] != '\0') // Loop until the end of either string
 return a[i] - b[i]; // If we reached the end of one string, return the difference (handles cases where one string is a prefix of the other)
 }
 
+// -- modifing upper-to-lower case 
+void toLowerCase(char* s){
+     while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
+     {
+        if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
+            *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
+        }
+        s ++ ; // adding by one 
+     } 
+}
 /* Reverses a string in place using two-pointer swapping */
 void reverseString(char* s)
 {
@@ -99,6 +121,20 @@ int countVowels(const char* s)
     return count;  // Return the total count of vowels
 }
 
+
+// -- Palindrome
+int isPalindrome(const char* s){
+     int i = 0 , j = my_strlen(s) - 1 ; // creating 2 intgers one at the begening and on by the end of the char
+     while (i < j) // to make sure we covered all the string without passing throgh all of it 
+     {
+        if(s[i] != s [j]){ // comparing 
+            return 0;// returning 0 in case they aint equal 
+        }
+        i++ ; 
+        j --;
+     }
+      return 1 ; 
+}
 /* Removes all occurrences of a character from a string */
 void removeChar(char* s, char c)
 {
@@ -118,48 +154,14 @@ void removeChar(char* s, char c)
     }
 
     s[j] = '\0';
-}// -- Copy each character from src to dest until and including '\0'. Return dest. The destination buffer must be large enough. -- //
-char* my_strcpy(char* dest, const char* src){
-    char* svd_dest = dest;
-     while (*src != '\0'){ // starting a while loop that ends as soon as the source reaches its end 
-         *dest = *src ; // coping the char from the source to destination 
-         dest ++ ;
-         src ++ ; 
-         // adding +1 for both  the source and the destination to move a single step
-     }
-     *dest = '\0' ; 
-     // adding the character constant  
-     return svd_dest ;
 }
-// -- modifing upper-to-lower case 
-void toLowerCase(char* s){
-     while ( *s != '\0') // to make sure *s has moved all along the char and stops by its end
-     {
-        if (*s > 'A' && *s < 'Z'){ // cheacking whiether *s is between A-Z
-            *s = *s + 32 ; // adding 32 to its ASC to make it lowercase 
-        }
-        s ++ ; // adding by one 
-     } 
-}
-// -- Palindrome
-int isPalindrome(const char* s){
-     int i = 0 , j = strlen(s) -1 ; // creating 2 intgers one at the begening and on by the end of the char
-     while (i < j) // to make sure we covered all the string without passing throgh all of it 
-     {
-        if(s[i] != s [j]){ // comparing 
-            return 0;// returning 0 in case they aint equal 
-        }
-        i++ ; 
-        j -- .
-     }
-      return 1 ; 
-}
+
 
 /* Extracts a substring from src starting at index start with length len and stores it in dest */
 void substring(const char* src, int start, int len, char* dest)
 {
     int i;
-    int srclen =strlen(src); // Get the length of the source string
+    int srclen =my_strlen(src); // Get the length of the source string
     if (start < 0 || start + len > srclen) // Check for valid start and length
     {
         dest[0] = '\0'; // If invalid, return an empty string
@@ -172,3 +174,20 @@ void substring(const char* src, int start, int len, char* dest)
     dest[len] = '\0'; // Null-terminate the destination string
 }
 
+/* Compares two strings ignoring case */
+int compareIgnoreCase(const char* a, const char* b)
+{
+    while (*a != '\0' && *b != '\0')
+    {
+        char ca = tolower(*a); // Convert character from string a to lowercase
+        char cb = tolower(*b); // Convert character from string b to lowercase
+
+        if (ca != cb) // If characters differ, return the difference
+        {
+            return ca - cb; // Return the difference of the ASCII values
+        }
+        a++;
+        b++;
+    }
+    return 0; // Strings are identical (ignoring case)
+}

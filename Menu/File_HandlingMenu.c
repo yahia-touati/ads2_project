@@ -40,8 +40,14 @@ void File_HandlingMenu()
                 scanf("%s", filename);
                 printf("Entre index: ");
                 scanf("%d", &index);
-                readRecord(filename, index, &r);
-                printf("ID: %d\nName: %s\nScore: %.2f\nCategory: %s\n", r.id, r.name, r.score, r.category);
+                if (readRecord(filename, index, &r) == 1)
+                {
+                    printf("ID: %d\nName: %s\nScore: %.2f\nCategory: %s\n", r.id, r.name, r.score, r.category);
+                }
+                else
+                {
+                    printf("Error reading record.\n");
+                }
                 break;
             case 4:
                 printf("Enter filename: ");
