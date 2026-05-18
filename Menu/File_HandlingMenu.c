@@ -23,22 +23,22 @@ void File_HandlingMenu()
                 createBinaryFile(filename);
                 break;
             case 2:
-                printf("Entre filename: ");
+                printf("Enter filename: ");
                 scanf("%s", filename);
-                printf("Entre id: ");
+                printf("Enter id: ");
                 scanf("%d", &r.id);
-                printf("Entre name: ");
+                printf("Enter name: ");
                 scanf("%s", r.name);
-                printf("Entre score: ");
+                printf("Enter score: ");
                 scanf("%f", &r.score);
-                printf("Entre category: ");
+                printf("Enter category: ");
                 scanf("%s", r.category);
                 writeRecord(filename, &r);
                 break;
             case 3:
                 printf("Enter filename: ");
                 scanf("%s", filename);
-                printf("Entre index: ");
+                printf("Enter index: ");
                 scanf("%d", &index);
                 if (readRecord(filename, index, &r) == 1)
                 {
@@ -55,15 +55,15 @@ void File_HandlingMenu()
                 printf("Number of Records: %d\n", countRecords(filename));
                 break;
             case 5:
-                printf("Entre filename: ");
+                printf("Enter filename: ");
                 scanf("%s", filename);
-                printf("Entre id: ");
+                printf("Enter id: ");
                 scanf("%d", &r.id);
-                printf("Entre name: ");
+                printf("Enter name: ");
                 scanf("%s", r.name);
-                printf("Entre score: ");
+                printf("Enter score: ");
                 scanf("%f", &r.score);
-                printf("Entre category: ");
+                printf("Enter category: ");
                 scanf("%s", r.category);
                 appendRecord(filename, &r);
                 break;

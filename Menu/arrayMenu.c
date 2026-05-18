@@ -103,8 +103,8 @@ void DynamicArray(int arr[], int size)
     int choice;
     do{
         printf("=== Dynamic Array ===\n");
-        printf("1. Create \n2. Fill \n"
-            "3. Print \n4. Resize \n5. Free \n0. Back\nChoice: ");
+        printf("1. Create    2. Fill \n"
+               "3. Resize    4. Free \n0. Back\nChoice: ");
         scanf("%d", &choice);
         switch (choice) {
             case 1:
@@ -126,14 +126,6 @@ void DynamicArray(int arr[], int size)
                 break;
             case 3:
                 if (d_arr != NULL) {
-                    printf("Dynamic Array: ");
-                    printArray(d_arr, capacity);
-                } else {
-                    printf("Please create a dynamic array first.\n");
-                }
-                break;
-            case 4:
-                if (d_arr != NULL) {
                     int newSize;
                     printf("Enter new capacity: ");
                     scanf("%d", &newSize);
@@ -144,7 +136,7 @@ void DynamicArray(int arr[], int size)
                     }
                 }
                 break; 
-            case 5:
+            case 4:
                 if (d_arr != NULL) {
                     freeArray(&d_arr);
                     d_arr = NULL;

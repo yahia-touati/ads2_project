@@ -24,8 +24,10 @@ int main() {
             case 2: 
                 MatricMenu(a, &cols, &rows);
                 break;
-            /*case 2: Linked_ListesMenu(); break;
-            case 3: StacksMenu(); break;
+            case 3: 
+                Linked_ListMenu(); 
+                break;
+            /*case 3: StacksMenu(); break;
             case 4: QueuesMenu(); break;*/
             case 6: 
                 File_HandlingMenu();

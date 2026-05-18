@@ -12,6 +12,11 @@ void sort_quick(int arr[], int size);
 void MatricMenu(int a[][MAX_COLS], int *cols, int *rows);
 void DynamicArray(int arr[], int size);
 
+/* *** Linked List Menu *** */
+void Linked_ListMenu();
+void Singly_LinkedListMenu();
+void Doubly_LinkedListMenu();
+
 /* *** String Utils *** */
 void String_UtilsMenu();
 
