@@ -24,4 +24,7 @@ void String_UtilsMenu();
 float averageByField(Record arr[], int count);
 int filterByCondition(Record arr [], int count, float threshold, Record out[]);
 
+/* *** Queues Menu *** */
+void QueuesMenu();
+
 #endif

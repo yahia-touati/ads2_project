@@ -35,7 +35,7 @@ int enqueue(Queue* Q, int value)
     return 1;
 }
 
-/*Removes and returns the value at the front of the queue */
+/* Removes and returns the value at the front of the queue */
 int front(Queue* Q)
 {
     // Check if queue is empty

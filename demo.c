@@ -27,8 +27,10 @@ int main() {
             case 3: 
                 Linked_ListMenu(); 
                 break;
-            /*case 3: StacksMenu(); break;
-            case 4: QueuesMenu(); break;*/
+            /*case 3: StacksMenu(); break;*/
+            case 5: 
+                QueuesMenu(); break;
+                break;
             case 6: 
                 File_HandlingMenu();
                 break;
