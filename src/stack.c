@@ -4,6 +4,13 @@
 #include <stdbool.h>
 
 /* --- Stack --- */
+void initStack(Stack* S)
+{
+    if (S == NULL)
+        return;
+        
+    S->top = NULL;
+}
 
 /* Pushes a value onto the top of the stack */
 int push(Stack* S, int value)
@@ -36,14 +43,10 @@ int pop(Stack* S)
 /* Returns the value at the top of the stack without removing it */
 int peek(Stack* S)
 {
-    if (S->top == NULL) {
-        printf("Stack is empty.\n");
-        return -1; // Return -1 to indicate stack is empty
-    }
     return S->top->data;
 }
 
 /* Function to check if the stack is empty */
-int isEmpty(Stack* S) {
+int is_Empty(Stack* S) {
     return S->top == NULL; // Returns 1 if the stack is empty, 0 otherwise
 }

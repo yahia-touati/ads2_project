@@ -8,5 +8,6 @@ int enqueue(Queue* Q, int value);
 int dequeue(Queue* Q);
 int front(Queue* Q);
 int rear(Queue* Q);
+int isEmpty(Queue* Q);
 
 #endif

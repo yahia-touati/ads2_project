@@ -27,4 +27,7 @@ int filterByCondition(Record arr [], int count, float threshold, Record out[]);
 /* *** Queues Menu *** */
 void QueuesMenu();
 
+/* *** Stacks Menu *** */
+void StacksMenu();
+
 #endif
