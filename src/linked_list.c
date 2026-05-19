@@ -367,5 +367,26 @@ Node* searchValue(List* L, int value) {
     // we return NULL if we reached the end of the list and we didn't find the value
     return NULL; 
 }
+int insertBeginningDLL(DLL* L, int value) {
+    // reserving place for the new node in memory 
+    Node* newNode = (Node*)malloc(sizeof(Node));
 
+    newNode->data = value;
+    newNode->next = L->head; // the new node will point to the current head as its next node 
+    newNode->prev = NULL;   
+
+    // handling the case of an empty list
+    if (L->head == NULL) {
+        // if the list is empty, both head and tail will point to the new node
+        L->tail = newNode;
+    } else {
+        // if it's not empty, the current head's previous pointer should point to the new node
+        L->head->prev = newNode;
+    }
+
+    // update the head of the list to be the new node
+    L->head = newNode;
+
+    return 1; 
+}
 
