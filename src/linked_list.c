@@ -350,6 +350,22 @@ void displayForward(DLL* L)
 
     printf("\n");
 }
+Node* searchValue(List* L, int value) {
+    // from the head of the list, we will traverse through the nodes one by one
+    Node* crrt = L->head;
 
+    // a loop to traverse through the nodes until we reach the end of the list (NULL)
+    while (crrt != NULL) {
+        if (crrt->data == value) {
+            return crrt; // return the pointer to the node if we found the value
+        }
+        
+        // movving to the next node in the list
+        crrt = crrt->next;
+    }
+
+    // we return NULL if we reached the end of the list and we didn't find the value
+    return NULL; 
+}
 
 
