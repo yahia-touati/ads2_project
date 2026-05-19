@@ -389,4 +389,24 @@ int insertBeginningDLL(DLL* L, int value) {
 
     return 1; 
 }
+void insertEnd(Node** head, int value) {
+    // creating a new node 
+    Node* newnode = (Node)malloc(sizeof(Node));
+    newnode->data = value;
+    newnode->next = NULL;
 
+    // checking weither it is empety or not 
+    if (head == NULL) {
+        head = newnode;
+        return;
+    }
+
+    // searching fot the last node 
+    Node temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    // linking the last node with the node just been created (newnode)
+    temp->next = newnode;
+}
