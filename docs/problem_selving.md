@@ -114,7 +114,7 @@ Part A - 1D static Arrays
 4. ​If the left element is greater than the right, swap them and set flag = true.
 5. ​If the loop finishes and flag is still false, break (sorting is done).
 
-# Function 8: selectionSort
+# Function 9: selectionSort
 
 ## ​Problem Understanding
 
@@ -470,6 +470,18 @@ Part C - Dynamic Arrays
 
 Singly Linked List
 
+# Function 32: initList
+
+## Problem Understanding
+- Input: Pointer to a linked list structure.
+- Output: Initializes an empty linked list.
+- Purpose: Must be called before using the list.
+
+### Algorithm
+1. Set the head pointer to NULL.
+2. Set the size variable to 0.
+3. The list is now empty and ready for use.
+
 # Function 35: insertAtPosition
 
 ## Problem Understanding
@@ -487,6 +499,27 @@ Singly Linked List
 6.Link the new node between the current node and its next node.
 7.Return success.
 
+# Function 37: deleteEnd
+
+## Problem Understanding
+- Input: Pointer to a linked list.
+- Output: Removes the last node from the list.
+- Edge Cases: Empty list or list with one node.
+
+### Algorithm
+1. Check if the list is empty.
+2. If empty, return a failure value or sentinel.
+3. If the list has only one node:
+   - Save its value.
+   - Free the node.
+   - Set head to NULL.
+4. Otherwise:
+   - Traverse until reaching the last node.
+   - Keep track of the previous node.
+5. Unlink the last node from the list.
+6. Free the last node from memory.
+7. Return the deleted value if required.
+
 # Function 38: displayList
 
 ## Problem Understanding
@@ -502,6 +535,23 @@ Singly Linked List
 6.If it is the last node, print “-> NULL”.
 7.Move to the next node.
 8.End when reaching NULL.
+
+# Function 40: sortListBubble
+
+## Problem Understanding
+- Input: Linked list L.
+- Output: Sorts the list in ascending order using Bubble Sort.
+- Constraint: Swap node data values only, not node links.
+
+### Algorithm
+1. Repeat passes through the list until no swaps occur.
+2. Traverse the list node by node.
+3. Compare the current node value with the next node value.
+4. If they are out of order:
+   - Swap their data values.
+5. Continue until the end of the list.
+6. When a full pass occurs without swaps, the list is sorted.
+
 
 Doubly Linked List
 
@@ -554,6 +604,21 @@ Doubly Linked List
 ​Ensure the new Head's prev and the new Tail's next are set to NULL if they exist.
 ​Use free(current) to release memory and exit the function.
 
+# Function 50: displayForward
+
+## Problem Understanding
+- Input: Doubly linked list L.
+- Output: Prints all node values from beginning to end.
+- Concept: Traversal uses next pointers.
+
+### Algorithm
+1. Start from the head node.
+2. While the current node is not NULL:
+   - Print the current node data.
+   - Move to the next node using current = current->next.
+3. Stop when the end of the list is reached.
+
+
 Stack
 
 # Function 49: push
@@ -570,6 +635,20 @@ Stack
 5.Update the stack’s top to the new node.
 6.Return success.
 
+# Function 55: peek
+
+## Problem Understanding
+- Input: Stack S.
+- Output: Returns the top value without removing it.
+- Edge Cases: Empty stack.
+
+### Algorithm
+1. Check if the stack is empty.
+2. If empty, return a sentinel value.
+3. Otherwise, access data[top].
+4. Return the value without modifying top.
+
+
 Queue
 
 # Function 53: initQueue
@@ -584,6 +663,25 @@ Queue
 2.Set front to NULL.
 3.Set rear to NULL.
 4.The queue is now empty and ready for use.
+
+# Function 60: front / rear
+
+## Problem Understanding
+- Input: Queue Q.
+- Output:
+  - front() returns the first element.
+  - rear() returns the last element.
+- Constraint: Neither function removes elements.
+
+### Algorithm
+1. For front():
+   - Access data[Q->front].
+   - Return the value.
+2. For rear():
+   - Compute the last index using:
+     (Q->rear - 1 + MAX) % MAX
+   - Return the value at that index.
+3. Do not modify the queue structure.
 
 File Handling
 
@@ -600,6 +698,21 @@ File Handling
 4.If writing fails, close the file and return -1.
 5.Close the file.
 6.Return success.
+
+# Function 64: countRecords
+
+## Problem Understanding
+- Input: Binary file name.
+- Output: Returns the number of records stored in the file.
+- Concept: File size divided by record size.
+
+### Algorithm
+1. Open the file in binary read mode ("rb").
+2. Move the file pointer to the end using fseek.
+3. Get the file size using ftell.
+4. Divide the file size by sizeof(Record).
+5. Return the calculated number of records.
+6. Close the file.
 
 # Function 64: updateRecord
 
@@ -620,6 +733,20 @@ File Handling
 
 String
 
+# Function 69: my_strlen
+
+## Problem Understanding
+- Input: String s.
+- Output: Returns the number of characters in the string.
+- Constraint: Stop at the null terminator '\0'.
+
+### Algorithm
+1. Initialize a counter variable i to 0.
+2. Loop while s[i] is not '\0'.
+3. Increment i during each iteration.
+4. When '\0' is reached, stop looping.
+5. Return i as the string length.
+
 # Function 68: my_strcat
 
 ## Problem Understanding
@@ -634,7 +761,25 @@ String
 5.Add a null terminator at the end of the new string.
 6.Return dest.
 
-#Function 73: reverseString
+# Function 73: my_strcmp
+
+## Problem Understanding
+- Input: Two strings a and b.
+- Output:
+  - 0 if equal,
+  - Negative if a < b,
+  - Positive if a > b.
+- Concept: Compare characters one by one.
+
+### Algorithm
+1. Start comparing characters from index 0.
+2. While characters are equal and not '\0':
+   - Move to the next index.
+3. At the first mismatch:
+   - Return a[i] - b[i].
+4. If both strings end together, return 0.
+
+# Function 73: reverseString
 
 ##Problem Understanding
     -Input: string s
@@ -650,6 +795,28 @@ String
 5.Increment i, decrement j.
 6.Repeat until i >= j.
  
+ # Function 78: countVowels / countConsonants
+
+## Problem Understanding
+- Input: String s.
+- Output:
+  - countVowels returns the number of vowels.
+  - countConsonants returns the number of consonants.
+- Constraint: Ignore non-alphabetic characters.
+
+### Algorithm
+1. Initialize a counter to 0.
+2. Traverse the string character by character.
+3. Convert each character to lowercase.
+4. For vowels:
+   - Check if the character is in "aeiou".
+   - If yes, increment the counter.
+5. For consonants:
+   - Check if the character is alphabetic.
+   - Ensure it is not a vowel.
+   - Increment the counter.
+6. Return the final count.
+
  # #Function 77: removeChar
 
 
@@ -664,3 +831,34 @@ String
 4.If s[i] is not equal to c, copy it to s[j] and increment j.
 5.Always increment i.
 6.After traversal, add '\0' at position j.
+
+# Function 83: substring
+
+## Problem Understanding
+- Input: Source string src, starting index start, length len, destination string dest.
+- Output: Copies a portion of the string into dest.
+- Constraint: Always null-terminate the destination string.
+
+### Algorithm
+1. Check that start + len does not exceed the source string length.
+2. Start a loop from i = 0 to len - 1.
+3. Copy src[start + i] into dest[i].
+4. After copying, place '\0' at dest[len].
+5. The destination string now contains the substring.
+
+Bonus
+
+# Function 86: displayDataset
+
+## Problem Understanding
+- Input: Array of Record structures and the number of records.
+- Output: Displays all records in a formatted table.
+- Purpose: Make dataset output organized and readable.
+
+### Algorithm
+1. Print table headers.
+2. Loop through all records from index 0 to count - 1.
+3. For each record:
+   - Print each field using formatted widths with printf.
+4. Print each record on a separate line.
+5. Continue until all records are displayed.
