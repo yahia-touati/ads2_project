@@ -398,13 +398,14 @@ int  deleteByValueDLL(DLL *L, int value)
     return -1; // value not found
 }
 /* Displays the elements of a doubly linked list from head to tail */
-void displayForward(DLL* L)
+void displayForwardDLL(DLL* L)
 {
     DNode* current = L->head;
 
     while (current != NULL)
     {
         printf("%d ", current->data);
+        printf(current->next != NULL ? "-> " : "-> NULL");
         current = current->next;
     }
 

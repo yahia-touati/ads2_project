@@ -155,5 +155,52 @@ void Singly_LinkedListMenu()
 
 void Doubly_LinkedListMenu()
 {
-    printf("hi");
+    int choice, value;
+    DLL L;
+    initListDLL(&L); 
+    do{   
+        printf("=== Doubly Linked List Menu ===\n");
+        printf("1. Insert at Beginning  2. Insert at End   3. Delete by value\n"
+            "4. Display Forward     5. Display Backward\n");
+        printf("0. Back\nChoice: ");
+        scanf("%d", &choice);
+        switch (choice) 
+        {
+            case 1:
+                printf("Enter value to insert at the beginning: ");
+                scanf("%d", &value);
+                if (insertBeginningDLL(&L, value) == 1){
+                    printf("Value inserted successfully at the beginning.\n");
+                }else{
+                    printf("Error inserting value at the beginning.\n");   
+                }
+                break;
+            case 2:
+                printf("Enter value to insert at the end: ");
+                scanf("%d", &value);
+                if (insertEndDLL(&L, value) == 1){
+                    printf("Value inserted successfully at the end.\n");
+                }else{
+                    printf("Error inserting value at the end.\n");
+                }
+                break;
+            case 3:
+                printf("Enter value to delete: ");
+                scanf("%d", &value);
+                if (deleteByValueDLL(&L, value) != -1){
+                    printf("Value deleted successfully.\n");
+                }else{
+                    printf("Value not found in the list.\n");
+                }
+                break;
+            case 4:
+                printf("Doubly Linked List (Forward): ");
+                displayForwardDLL(&L);
+                break;
+            case 5:
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");  
+        }
+    } while (choice != 0);
 }

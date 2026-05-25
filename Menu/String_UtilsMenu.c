@@ -37,7 +37,7 @@ void String_UtilsMenu() {
                 printf("Copied string: %s\n", dest);
                 break;
             case 3:
-                
+
                 break;
             case 4:
                 printf("Enter the first string: ");
@@ -127,7 +127,6 @@ void String_UtilsMenu() {
                 printf("Number of vowels is: %d", count_vowels);
                 break;
             case 11:
-                
                 break;
             case 12:
                 printf("Enter the string: ");
@@ -162,7 +161,12 @@ void String_UtilsMenu() {
                 printf("The new text: %s", str);
                 break;
             case 15:
-                
+                printf("Enter the string: ");
+                while (getchar() != '\n');
+                fgets(str, MAX_STRING_LEN, stdin);
+                str[strcspn(str, "\n")] = '\0';
+                removeSpaces(str);
+                printf("The new text: %s", str);
                 break;
             case 16:
                 printf("Enter the first string: ");

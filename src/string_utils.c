@@ -208,7 +208,25 @@ void removeChar(char* s, char c)
 
     s[j] = '\0';
 }
+void removeSpaces(char* s)
+{
+    if (s == NULL)
+        return;
 
+    int i = 0, j = 0;
+
+    while (s[i] != '\0')
+    {
+        if (s[i] != ' ')
+        {
+            s[j] = s[i];
+            j++;
+        }
+        i++;
+    }
+
+    s[j] = '\0';
+}
 
 /* Extracts a substring from src starting at index start with length len and stores it in dest */
 void substring(const char* src, int start, int len, char* dest)
