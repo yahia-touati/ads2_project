@@ -35,6 +35,21 @@ int enqueue(Queue* Q, int value)
     return 1;
 }
 
+int dequeue(Queue* Q)
+{
+    if (Q == NULL || Q->front == NULL)
+        return -1; // indicate faliure
+
+    Node* temp = Q->front;
+    int value = temp->data;
+    Q->front = Q->front->next;
+    if(Q->front == NULL)
+    {
+        Q->rear = NULL;
+    }
+    free(temp);
+    return value;
+}
 /* Removes and returns the value at the front of the queue */
 int front(Queue* Q)
 {

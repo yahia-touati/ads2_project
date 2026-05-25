@@ -26,7 +26,15 @@ void QueuesMenu()
             }
                 break;
             case 2:
-
+                if (isEmpty(&Q) == 1)
+                {
+                    printf("The queue is empty: \n");
+                }
+                else
+                {
+                    value = dequeue(&Q);
+                    printf("Value %d dequeued from the queue successfully.\n", value);
+                }
                 break;
             case 3:
             if (isEmpty(&Q) == 1)

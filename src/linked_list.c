@@ -26,6 +26,27 @@ int insertBeginning(List* L, int value) {
 
     return 1; // Successfully inserted at the beginning
 }
+int insertEnd(List* L, int value) {
+    // creating a new node 
+    Node* newnode = (Node*)malloc(sizeof(Node));
+    newnode->data = value;
+    newnode->next = NULL;
+
+    // checking weither it is empety or not 
+    if (L->head == NULL) {
+        L->head = newnode;
+        return 1;
+    }
+
+    // searching fot the last node 
+    Node *temp = L->head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    // linking the last node with the node just been created (newnode)
+    temp->next = newnode;
+    return 1;
+}
 
 /* Inserts a node at a given position in a linked list */
 int insertAtPosition(List* L, int pos, int value)
@@ -142,6 +163,23 @@ int deleteByValue(List* L, int value) {
     return 1; // Successfully deleted the node with the given value
 }
 
+Node* searchValue(List* L, int value) {
+    // from the head of the list, we will traverse through the nodes one by one
+    Node* crrt = L->head;
+
+    // a loop to traverse through the nodes until we reach the end of the list (NULL)
+    while (crrt != NULL) {
+        if (crrt->data == value) {
+            return crrt; // return the pointer to the node if we found the value
+        }
+        
+        // movving to the next node in the list
+        crrt = crrt->next;
+    }
+
+    // we return NULL if we reached the end of the list and we didn't find the value
+    return NULL; 
+}
 /* Prints all elements of the linked list */
 void displayList(List* L)
 {
@@ -225,7 +263,7 @@ void mergeSortedListe(List *A, List* B, List* result)
         result->head = currentB;
         return;
     }
-    else if (currentB ==NULL) // if A is empty, result is just B
+    else if (currentB == NULL) // if A is empty, result is just B
     {
         result->head = currentA;
         return;
@@ -271,6 +309,28 @@ void initListDLL(DLL* L) {
     L->size = 0; // Initialize size to 0
 }
 
+int insertBeginningDLL(DLL* L, int value) {
+    // reserving place for the new node in memory 
+    DNode* newNode = (DNode*)malloc(sizeof(DNode));
+
+    newNode->data = value;
+    newNode->next = L->head; // the new node will point to the current head as its next node 
+    newNode->prev = NULL;   
+
+    // handling the case of an empty list
+    if (L->head == NULL) {
+        // if the list is empty, both head and tail will point to the new node
+        L->tail = newNode;
+    } else {
+        // if it's not empty, the current head's previous pointer should point to the new node
+        L->head->prev = newNode;
+    }
+
+    // update the head of the list to be the new node
+    L->head = newNode;
+
+    return 1; 
+}
 /* Inserts a node at the end of a doubly linked list */
 int insertEndDLL(DLL* L, int value)
 {
@@ -350,63 +410,6 @@ void displayForward(DLL* L)
 
     printf("\n");
 }
-Node* searchValue(List* L, int value) {
-    // from the head of the list, we will traverse through the nodes one by one
-    Node* crrt = L->head;
 
-    // a loop to traverse through the nodes until we reach the end of the list (NULL)
-    while (crrt != NULL) {
-        if (crrt->data == value) {
-            return crrt; // return the pointer to the node if we found the value
-        }
-        
-        // movving to the next node in the list
-        crrt = crrt->next;
-    }
 
-    // we return NULL if we reached the end of the list and we didn't find the value
-    return NULL; 
-}
-int insertBeginningDLL(DLL* L, int value) {
-    // reserving place for the new node in memory 
-    Node* newNode = (Node*)malloc(sizeof(Node));
 
-    newNode->data = value;
-    newNode->next = L->head; // the new node will point to the current head as its next node 
-    newNode->prev = NULL;   
-
-    // handling the case of an empty list
-    if (L->head == NULL) {
-        // if the list is empty, both head and tail will point to the new node
-        L->tail = newNode;
-    } else {
-        // if it's not empty, the current head's previous pointer should point to the new node
-        L->head->prev = newNode;
-    }
-
-    // update the head of the list to be the new node
-    L->head = newNode;
-
-    return 1; 
-}
-void insertEnd(Node** head, int value) {
-    // creating a new node 
-    Node* newnode = (Node)malloc(sizeof(Node));
-    newnode->data = value;
-    newnode->next = NULL;
-
-    // checking weither it is empety or not 
-    if (head == NULL) {
-        head = newnode;
-        return;
-    }
-
-    // searching fot the last node 
-    Node temp = *head;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
-
-    // linking the last node with the node just been created (newnode)
-    temp->next = newnode;
-}
