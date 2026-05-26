@@ -171,6 +171,31 @@ int countVowels(const char* s)
     }
     return count;  // Return the total count of vowels
 }
+
+/* Counts the number of consonants in a string */
+int countConsonants(const char* s)
+{
+    int count = 0;
+    int i = 0;
+
+    while (s[i] != '\0')
+    {
+        char c = tolower(s[i]);
+
+        // consonant = letter and not vowel
+        if (isalpha(c) &&
+            c != 'a' && c != 'e' && c != 'i' &&
+            c != 'o' && c != 'u')
+        {
+            count++;
+        }
+
+        i++;
+    }
+
+    return count;
+}
+
 /* Counts the number of words in a string */
 int countWords(const char* s) { // s is the input string for which we want to count the number of words
     int i = 0; // Initialize index to 0
