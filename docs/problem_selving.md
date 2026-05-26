@@ -1,3 +1,5 @@
+Part A - 1D static Arrays
+
 # Function 1: ReadAraay
 
 ## Problem Understending 
@@ -26,11 +28,23 @@
 ​- Output: Prints array in [a, b, c] format.
 ​- Edge Cases: If size == 0, prints [].
 
-​### Algorithm
+### Algorithm
 1. ​Print opening bracket [.
 ​2. Loop through arr[] and print each element.
 ​3. If the element is not the last one, print a comma and space.
 ​4. Print closing bracket ].
+
+# Function : printArray
+
+## ​Problem Understanding 
+​Input: arr[] — the array containing the elements, size — the number of elements currently in the array.
+​Output: None (returns void); prints the array elements to the standard output in a clean, formatted style.
+### Algorithm
+​Print the opening bracket [.
+​Check if size is greater than 0. If it is, start a loop from 0 to size - 1:
+​Print the current element arr[i].
+​If the current element is not the last element (i.e., i < size - 1), print a comma and a space ,  to separate it from the next one.
+​Print the closing bracket ] followed by a newline character \n to clear the line.
 
 # Function 4: insertAt
 
@@ -45,7 +59,7 @@
 3. ​Place the new value at arr[index].
 ​4. Increment *size by 1.
 
-​# Function 5: deleteAt
+# Function 5: deleteAt
 
 ## ​Problem Understanding
 - ​Input: arr[], *size, index (position to remove).
@@ -99,8 +113,26 @@
 3. ​Loop through the array and compare each pair of adjacent elements.
 4. ​If the left element is greater than the right, swap them and set flag = true.
 5. ​If the loop finishes and flag is still false, break (sorting is done).
+
+# Function 9: selectionSort
+
+## ​Problem Understanding
+
+​Input: arr[] — the array to be sorted, size — the number of elements in the array.
+​Output: None (returns void); rearranges the elements of arr[] in ascending order in-place.
+​Edge cases:
+​Array with less than two elements (size <= 1), where the array is already considered sorted and no actions are required.
+​Already sorted array, where it still performs the outer loops and exactly n - 1 swaps (swapping an element with itself) unless explicitly optimized.
+
+### ​Algorithm
+​Loop through the array from i = 0 up to size - 2 (this tracks the boundary of the sorted portion).
+​For each position i, assume the element at i is the minimum, and store its index as minIndex = i.
+​Start an inner loop from j = i + 1 up to size - 1 to scan the remaining unsorted portion of the array:
+​If arr[j] is strictly less than arr[minIndex], update minIndex = j.
+​After finding the actual minimum element in the unsorted portion, swap arr[i] with arr[minIndex].
+​Note: This swap is executed exactly once per outer loop iteration, guaranteeing exactly n - 1 swaps in total for the entire sorting process regardless of the initial data order.
 ​
-# Function 9: insertionSort
+# Function 10: insertionSort
 
 ## ​Problem Understanding
 - ​Input: arr[], size.
@@ -112,7 +144,7 @@
 3. ​If the current element is smaller than the one before it, swap them.
 4. ​Continue swapping until the element is in its correct relative position.
 ​
-# Function 10: mergeSort & mergeSortedArrays
+# Function 11: mergeSort & mergeSortedArrays
 
 ## ​Problem Understanding
 - ​Input: arr[], left, right.
@@ -123,7 +155,31 @@
 2. ​Copy: Create two temporary arrays (a and b) to store the split data.
 3. ​Conquer: Use mergeSortedArrays to compare elements from a and b and merge them back into the main array in sorted order.
 
-# Functions 12: findMax & findMin
+# function 12: quickSort
+
+## ​Problem Understanding
+
+​Input: arr[] — the array to be sorted, low — the starting index of the sub-array to sort, high — the ending index of the sub-array to sort.
+​Output: None (returns void); recursively sorts the sub-array in-place in ascending order.
+​Edge cases:
+​Sub-array with zero or one element (low >= high), which serves as the base case for recursion and requires no sorting.
+​Highly unbalanced partitions (e.g., already sorted data when choosing the last element as a pivot), which affects time complexity but is handled correctly by the logic.
+
+### ​Algorithm
+
+1. ​Check if the base case is met: if low < high, proceed to partition and sort.
+2. ​Partitioning Stage:
+​Pick the last element as the pivot: pivot = arr[high].
+​Initialize a tracking index i = low - 1 to mark the boundary of elements smaller than the pivot.
+​Loop through the sub-array using a variable j from low to high - 1:
+​If arr[j] is less than or equal to the pivot, increment i and swap arr[i] with arr[j].
+​After the loop, swap the pivot element (arr[high]) with arr[i + 1] to place the pivot in its correct sorted position.
+​Save this final pivot index as pivotIndex = i + 1.
+3. ​Recursive Sorting Stage:
+​Recursively call quickSort(arr, low, pivotIndex - 1) to sort the left half (elements smaller than the pivot).
+​Recursively call quickSort(arr, pivotIndex + 1, high) to sort the right half (elements larger than the pivot).
+
+# Functions 13 - 14: findMax & findMin
 
 ## ​Problem Understanding
 ​- Input: arr[], size.
@@ -135,13 +191,212 @@
 ​3. If any element is greater than Max, update Max with that value.
 ​4. Return Max.
 
-#Function 25: sortRows
+# Function 15: sumArray
+
+## ​Problem Understanding
+
+​Input: arr[] — the array containing the integers, size — the number of elements in the array.
+​Output: Returns an integer representing the total sum of all elements in the array.
+​Edge cases:
+​Empty array (size == 0), which must explicitly return 0 as there are no elements to accumulate.
+​Array with negative numbers, where the running total should decrease accordingly.
+​Large element values, where the sum might risk integer overflow (though standard logic assumes values fit within regular integer bounds).
+
+# ​Algorithm
+
+1. ​Initialize a variable to store the running total, e.g., sum = 0.
+​2. Check if the array is empty (size == 0). If it is, the loop will naturally be skipped, and sum remains 0.
+​3. Loop through the array from i = 0 up to size - 1:
+​Add the value of the current element arr[i] to the sum variable (sum += arr[i]).
+​4. After completing the loop, return the final value of sum.
+
+# Function 16: averageArray
+
+## ​Problem Understanding
+​Input: arr[] — the array containing the integers, size — the number of elements in the array.
+​Output: Returns a double representing the average value of the elements.
+​Edge cases:
+​Empty array (size == 0), which must return 0.0 explicitly to avoid a critical runtime error (division by zero).
+​Integer truncation, where dividing an integer sum by an integer size would discard the fractional part (e.g., 5 / 2 becoming 2 instead of 2.5). This is prevented by casting to double before division.
+
+### ​Algorithm
+
+1. ​Check if the array is empty (size == 0). If it is, return 0.0 immediately.
+​2. Initialize a variable to accumulate the total sum, e.g., sum = 0.
+​3. Loop through the array from i = 0 up to size - 1 and add each element arr[i] to sum.
+​4. Calculate the average by casting the sum to a double (i.e., (double)sum) and then dividing it by size.
+​5. Return the resulting floating-point value.
+
+# ​Function 17: reverseArray
+
+## ​Problem Understanding
+
+​Input: arr[] — the array to be reversed, size — the number of elements in the array.
+​Output: None (returns void); reverses the order of elements in-place within the original array.
+​Edge cases:
+​Array with zero or one element (size <= 1), where the array is already its own reverse and no swaps are performed.
+​Even vs. Odd sizes (e.g., size = 4 or size = 5). Integer division size / 2 correctly identifies the midpoint loop boundary for both cases without touching the middle element of an odd-sized array (as it doesn't need to move).
+
+### ​Algorithm
+1. ​Loop through the first half of the array from i = 0 up to (size / 2) - 1.
+​2. For each iteration, swap the element at the current index i with its corresponding element from the back of the array at index size - 1 - i.
+​Mechanism: Use a temporary variable (temp = arr[i]) to safely perform the swap in-place without losing data.
+3. ​Once the loop reaches the midpoint, terminate to avoid swapping the elements back to their original positions.
+
+# Function 18: rotateLeft
+
+## ​Problem Understanding
+
+​Input: arr[] — the array to be rotated, size — the number of elements in the array, k — the number of positions to shift left.
+​Output: None (returns void); modifies the original array by rotating its elements in-place or using a temporary structure.
+​Edge cases:
+​Empty array or single element (size <= 1), or rotation amount is zero (k == 0), where no movement is required.
+​k is larger than size (k > size), which is handled by taking k = k % size because rotating an array of size N exactly N times results in the original array.
+
+### ​Algorithm
+
+1. ​Check if size <= 1 or k == 0. If so, return immediately as no rotation is needed.
+2. ​Normalize k using the modulo operator: k = k % size to filter out redundant full cycles. If the resulting k == 0, terminate early.
+​3. Allocate a temporary array of size k to temporarily store the first k elements that will "fall off" the front.
+​4. Copy the first k elements from arr (from index 0 to k - 1) into the temporary array.
+​5. Shift the remaining size - k elements of the original array to the left by k positions:
+​Loop from i = k up to size - 1 and move arr[i] to arr[i - k].
+​6. Copy the k elements from the temporary array back into the end of the original array:
+​7. Place them from index size - k up to size - 1.
+​Free any dynamically allocated memory for the temporary array (if applicable) to avoid memory leaks.
+
+Part B - 2D statis Matrices
+
+# Function 19: initMatrix
+
+## ​Problem Understanding
+
+​Input: m[][MAX_COLS] — the 2D matrix, *rows — pointer to save row count, *cols — pointer to save column count.
+​Output: None (returns void); updates dimension values and populates the matrix cells via console input.
+​Edge cases: Row or column input exceeding MAX_ROWS or MAX_COLS. Input must be validated within safe bounds before executing nested loops.
+
+### ​Algorithm
+
+1. ​Read the desired number of rows and columns from the user using scanf.
+​2. Check if the input values exceed structural thresholds (MAX_ROWS or MAX_COLS). Reprompt or handle bounds safely.
+​3. Save the valid values to *rows and *cols.
+​4. Run a nested loop: Outer loop i from 0 to *rows - 1, and inner loop j from 0 to *cols - 1.
+​5. Within the nested loop, capture each matrix element using scanf("%d", &m[i][j]).
+
+# ​Function 20: printMatrix
+
+## ​Problem Understanding
+
+​Input: m[][MAX_COLS] — the matrix to display, rows — total row count, cols — total column count.
+​Output: None (returns void); prints formatted matrix contents to the console grid.
+​Edge cases: Formatting alignment issues. Utilizing a fixed-width modifier ensures aligned column boundaries even with mixed digit counts.
+
+### ​Algorithm
+
+1. ​Run an outer loop i from 0 up to rows - 1 to parse the rows.
+​2. Run an inner loop j from 0 up to cols - 1 to parse the columns within that row.
+3. ​Print each element using a fixed-width layout constraint, such as printf("%4d ", m[i][j]).
+​4. Once the inner loop completes for a given row, print a newline character \n before moving to the next row sequence.
+
+# ​Function 21: transposeMatrix
+
+## ​Problem Understanding
+
+​Input: m[][MAX_COLS] — original source matrix, rows — row count of m, cols — column count of m, out[][MAX_COLS] — destination matrix.
+​Output: None (returns void); populates out with transposed dimensions where columns become rows.
+​Edge cases: Non-square matrices (R \neq C), where the destination structure out will have its logical limits inverted (cols rows and rows columns).
+
+### ​Algorithm
+
+1. ​Run a nested loop with an outer loop i from 0 to rows - 1 and an inner loop j from 0 to cols - 1.
+​2. For each cell combination, map the source element to its inverse index in the output block: out[j][i] = m[i][j].
+
+# ​Function 22: addMatrices
+
+## ​Problem Understanding
+
+​Input: a[][MAX_COLS] — first matrix, b[][MAX_COLS] — second matrix, r[][MAX_COLS] — result destination matrix, rows — row dimensions, cols — column dimensions.
+​Output: None (returns void); creates an element-wise sum matrix inside r.
+​Edge cases: Strict operational prerequisite that matrix a and matrix b share identical matrix sizes (R \times C).
+
+### ​Algorithm
+
+1. ​Run an outer loop i from 0 to rows - 1.
+​2. Run an inner loop j from 0 to cols - 1.
+​3. Add values sharing the same grid position from both source targets and write the summary to the result target: r[i][j] = a[i][j] + b[i][j].
+
+# Function 23: multiplyMatrices
+
+## ​Problem Understanding
+
+​Input: a[][MAX_COLS] — the first matrix, b[][MAX_COLS] — the second matrix, r[][MAX_COLS] — the result destination matrix, n — the dimension size (since both matrices are square of size n \times n).
+​Output: None (returns void); populates the matrix r with the product of a and b.
+​Edge cases:
+​Failing to reset the result matrix, which leads to logical bugs because the algorithm accumulates values into r[i][j]. The destination matrix must be explicitly initialized to zero.
+​Large values leading to integer overflow during computation.
+
+### ​Algorithm
+
+1. ​Run a nested loop to initialize all elements of the result matrix r to 0:
+​Outer loop i from 0 to n - 1, inner loop j from 0 to n - 1, set r[i][j] = 0.
+​2. Implement the standard triple-loop structure to perform matrix multiplication:
+​- Outer Loop (i): Iterates through rows of matrix a from 0 to n - 1.
+​- Middle Loop (j): Iterates through columns of matrix b from 0 to n - 1.
+​- Inner Loop (k): Iterates from 0 to n - 1 to compute the dot product of row i from matrix a and column j from matrix b.
+​3. Inside the innermost loop, accumulate the product:
+r[i][j] += a[i][k] * b[k][j]
+
+# ​Function 24 - 25: sumDiagonal / sumAntiDiagonal
+
+## ​Problem Understanding
+
+​Input: m[][MAX_COLS] — the square matrix, n — the dimension size of the matrix (n \times n).
+​Output: Returns an integer representing the sum of the elements on the specified diagonal.
+​Edge cases:
+​Matrix with a single element (n == 1), where both main and anti-diagonals point to the same cell m[0][0].
+​Performance optimization: Avoiding a nested O(n^2) loop since diagonals can be traversed in a single pass O(n).
+
+### ​Algorithm
+
+​For sumDiagonal (Main Diagonal):
+1. ​Initialize a tracker variable sum = 0.
+​2. Run a single loop with an index i from 0 up to n - 1.
+​3. In each iteration, add the element where the row and column indices are equal to the running total:
+sum += m[i][i]
+4. ​Return the final value of sum.
+​For sumAntiDiagonal (Anti-Diagonal):
+​1. Initialize a tracker variable sum = 0.
+​2. Run a single loop with an index i from 0 up to n - 1.
+​3. In each iteration, compute the column index as n - 1 - i. Add the corresponding element to the running total:
+sum += m[i][n - 1 - i]
+​4. Return the final value of sum.
+
+# Function 26: isSymmetric
+
+## ​Problem Understanding
+
+​Input: m[][MAX_COLS] — the square matrix to check, n — the dimension size of the matrix (n \times n).
+​Output: Returns 1 if the matrix is perfectly symmetric, or 0 otherwise.
+​Edge cases:
+​Matrix with a single element (n == 1), which is always symmetric and should return 1.
+​Early exit: The function should terminate and return 0 immediately upon finding the very first mismatch, avoiding unnecessary comparisons.
+
+### ​Algorithm
+
+1. ​Run an outer loop with index i from 0 up to n - 1 to iterate through the rows.
+​2. Run an inner loop with index j from i + 1 up to n - 1.
+​Optimization Note: Starting j from i + 1 restricts the check strictly to the upper triangle above the main diagonal, preventing redundant checks (like comparing m[i][j] with m[j][i] twice, or comparing diagonal elements m[i][i] with themselves).
+3. ​Inside the inner loop, compare the symmetric positions:
+​If m[i][j] != m[j][i], the matrix is not symmetric; return 0 immediately.
+​4. If both loops complete fully without triggering a mismatch, the matrix is symmetric; return 1.
+
+# Function 27: sortRows
 
 ## ​Problem Understanding
 -Input:2D array m[][MAX_COLS],number of rows, number of columns 
 -Output: Each row of the matrix is sorted independently in ascending order
 
-#Algorithm (sortRows)
+### Algorithm (sortRows)
 1.Loop through each row of the matrix.
 2.Treat the current row as a 1D array.
 3.Apply a sorting algorithm (e.g., selection sort) on that row.
@@ -150,13 +405,121 @@
 6.Repeat until the entire row is sorted.
 7.Move to the next row and repeat the process.
 
-# Function 33: insertAtPosition
+Part C - Dynamic Arrays
+
+# Function 28: createDynamicArray
+
+## ​Problem Understanding
+
+​Input: capacity — the number of integer slots to allocate memory for on the heap.
+​Output: Returns a pointer to the allocated block of memory (int*), or NULL if the system fails to allocate the requested memory.
+​Edge cases: Memory exhaustion (the operating system runs out of memory). In this case, malloc returns NULL. The program must explicitly handle this to prevent a segmentation fault when trying to write to a null address.
+
+### ​Algorithm
+
+1. ​Call memory allocation using malloc by calculating the total bytes needed: arr = (int*) malloc(capacity * sizeof(int)).
+​2. Check if the allocation failed by validating if arr == NULL.
+​3. If it is NULL, print an explicit memory allocation error message to stderr or standard output, then return NULL.
+​4. If the allocation is successful, return the valid tracking pointer arr.
+
+# ​Function 29: fillArray
+
+## ​Problem Understanding
+
+​Input: arr — pointer to the pre-allocated dynamic array, size — the number of elements to read from the user.
+​Output: None (returns void); populates the memory slots from index 0 to size - 1.
+​Edge cases: Running this function on an unallocated or NULL pointer. This function explicitly assumes that arr has already been successfully initialized and allocated with enough space to safely hold size elements.
+
+### ​Algorithm
+
+1. ​Start a loop with a counter i from 0 up to size - 1.
+​2. In each iteration, prompt or directly read an integer from the standard input using scanf("%d", &arr[i]) (or using pointer arithmetic scanf("%d", arr + i)).
+​3. Repeat until all size elements are sequentially stored in the allocated memory block.
+
+# ​Function 30: resizeArray
+
+## ​Problem Understanding
+
+​Input: arr — the current pointer tracking the dynamic array, newCapacity — the new size requirement (larger or smaller).
+​Output: Returns a pointer to the newly adjusted memory block (int*), or NULL if reallocation fails.
+​Edge cases:
+​Reallocation failure: If realloc cannot find a suitable memory block, it returns NULL. Crucially, the original memory block pointed to by arr remains perfectly intact and valid. Therefore, we must never assign arr = realloc(...) directly without a temporary pointer, otherwise we lose the original address and cause a memory leak if it fails.
+​Shrinking capacity: If newCapacity is smaller, realloc shrinks the block and releases the trailing memory safely.
+
+### ​Algorithm
+
+1. ​Safely call realloc and assign its result to a temporary pointer variable: temp = realloc(arr, newCapacity * sizeof(int)).
+​2. Check if the reallocation failed by verifying if temp == NULL.
+​3. If temp is NULL, print a reallocation error message and return NULL immediately (leaving the original arr untouched and un-freed).
+​4. If temp is valid, return temp so the calling program can update its array tracker with the new address block.
+
+# ​Function 31: freeArray
+
+## ​Problem Understanding
+
+​Input: arr — pointer to the dynamic array block that needs to be deallocated.
+​Output: None (returns void); releases the heap memory back to the operating system.
+​Edge cases:
+​Passing a NULL pointer: Calling free(NULL) is safe and does nothing in C, but it's good practice to verify.
+​Dangling Pointer: After calling free(arr), the pointer variable in the calling function still holds the memory address, but that memory is no longer ours to use. Accessing it causes undefined behavior. To prevent this "dangling pointer" bug, the pointer must be explicitly set to NULL in the caller right after this function executes.
+
+### ​Algorithm
+
+1. ​Check if the passed tracking pointer is already empty (arr == NULL). If true, return immediately to avoid redundant operations.
+​2. Call free(arr) to release the allocated block from the heap back to the system.
+
+Singly Linked List
+
+# Function 32: initList
+
+## Problem Understanding
+- Input: Pointer to a linked list structure.
+- Output: Initializes an empty linked list.
+- Purpose: Must be called before using the list.
+
+### Algorithm
+1. Set the head pointer to NULL.
+2. Set the size variable to 0.
+3. The list is now empty and ready for use.
+
+# Function 33: insertBeginning
+
+### Problem Understanding
+- Input: L — pointer to the list, value — integer to insert
+- Output: returns 0 on success, -1 if memory allocation fails
+- Edge cases: malloc returns NULL (memory full)
+
+### Algorithm
+1. Allocate a new node using malloc
+2. If allocation fails, return -1
+3. Store value in the new node
+4. Set new node's next to current L->head
+5. Update L->head to point to the new node
+6. Return 0
+
+# Function 34: insertEnd
+
+### Problem Understanding
+- Input: L — pointer to the list, value — integer to insert
+- Output: returns 0 on success, -1 if memory allocation fails
+- Edge cases: empty list (treat as insertBeginning)
+
+### Algorithm
+1. Allocate a new node using malloc
+2. If allocation fails, return -1
+3. Store value in the new node, set its next to NULL
+4. If list is empty (L->head == NULL), set L->head to new node and return 0
+5. Traverse the list until the last node (current->next == NULL)
+6. Link last node's next to the new node
+7. Return 0
+
+# Function 35: insertAtPosition
 
 ## Problem Understanding
  -Input: linked list L, position pos, value value
  -Output: inserts a new node containing value at position pos (1-based index)
  
-# Algorithm (insertAtPosition)
+### Algorithm (insertAtPosition)
 1.Create a new node and assign it the given value.
 2.If the position is invalid (pos ≤ 0), stop and return failure.
 3.If inserting at position 1:
@@ -167,32 +530,78 @@
 6.Link the new node between the current node and its next node.
 7.Return success.
 
-# Function 33: insertBeginning
+# Function 36: deleteBeginning
 
-## Problem Understanding
-Input: L, value
-Output: Returns -1 if memory allocation fails.
-Purpose: Inserts a new node at the beginning of the linked list.
-
-Edge Cases
-- Memory allocation failure.
-- Empty list (new node becomes the head).
+### Problem Understanding
+- Input: L — pointer to the list
+- Output: returns the deleted value on success, -1 if list is empty
+- Edge cases: empty list (L->head == NULL)
 
 ### Algorithm
-1. Allocate memory for a new node.
-2. If allocation fails, return -1.
-3. Store value in the new node.
-4. Set new node’s next pointer to current head.
-5. Update head to point to the new node.
-6. Return success value.
+1. If list is empty (L->head == NULL), return -1
+2. Save a pointer to the current head node
+3. Save the value stored in the head node
+4. Update L->head to point to the second node (head->next)
+5. Free the old head node
+6. Return the saved value
 
-# Function 38: displayList
+# Function 37: deleteEnd
+
+## Problem Understanding
+- Input: Pointer to a linked list.
+- Output: Removes the last node from the list.
+- Edge Cases: Empty list or list with one node.
+
+### Algorithm
+1. Check if the list is empty.
+2. If empty, return a failure value or sentinel.
+3. If the list has only one node:
+   - Save its value.
+   - Free the node.
+   - Set head to NULL.
+4. Otherwise:
+   - Traverse until reaching the last node.
+   - Keep track of the previous node.
+5. Unlink the last node from the list.
+6. Free the last node from memory.
+7. Return the deleted value if required.
+
+# Function 38: deleteByValue
+
+### Problem Understanding
+- Input: L — pointer to the list, value — integer to delete
+- Output: returns 0 on success, -1 if value not found or list is empty
+- Edge cases: empty list, value is in head node, value not present
+
+### Algorithm
+1. If list is empty (L->head == NULL), return -1
+2. If head node contains value, update L->head to head->next, free old head, return 0
+3. Traverse the list keeping track of previous node
+4. If a node with data == value is found, redirect prev->next to current->next
+5. Free the found node and return 0
+6. If value not found, return -1
+
+# Function 39: searchValue
+
+### Problem Understanding
+- Input: L — pointer to the list, value — integer to search for
+- Output: returns pointer to the first node where data == value, or NULL if not found
+- Edge cases: empty list, value not present
+
+### Algorithm
+1. Start at L->head
+2. Traverse the list node by node
+3. At each node, check if data == value
+4. If match found, return pointer to that node
+5. If end of list reached without a match, return NULL
+
+# Function 40: displayList
 
 ## Problem Understanding
  -Input: linked list L
  -Output: prints all elements of the list from head to NULL in order
  
-# "Algorithm (displayList)
+### Algorithm (displayList)
 1.Check if the list is empty (L == NULL). If yes, stop.
 2.Set a pointer current to the head of the list.
 3.Traverse the list while current is not NULL.
@@ -202,30 +611,86 @@ Edge Cases
 7.Move to the next node.
 8.End when reaching NULL.
 
-# Function 38: deleteByValue
+# Function 41: reverseList
 
-## Problem Understanding
-Input: L, value
-Output: Removes the first node containing value.
-Purpose: Deletes a node by its value from the linked list.
-
-Edge Cases
-- Empty list.
-- Value not found.
-- Node to delete is the head node.
+### Problem Understanding
+- Input: L — pointer to the list
+- Output: void — modifies the list in place, no return value
+- Edge cases: empty list, single node (no change needed)
 
 ### Algorithm
-1. Check if the list is empty.
-2. Traverse the list searching for value.
-3. Keep track of current node and previous node.
-4. If value is found at head:
-   - Update head to next node.
-5. Otherwise:
-   - Redirect previous node’s next pointer.
-6. Free the deleted node.
-7. Return success or failure.
+1. If list is empty or has one node, return immediately
+2. Initialize three pointers: prev = NULL, current = L->head, next = NULL
+3. Traverse the list, at each step:
+   - Save current->next into next
+   - Redirect current->next to prev
+   - Move prev to current
+   - Move current to next
+4. After traversal, update L->head to prev (old tail)
 
-# Function 44: insertEndDLL
+# Function 42: sortListBubble
+
+## Problem Understanding
+- Input: Linked list L.
+- Output: Sorts the list in ascending order using Bubble Sort.
+- Constraint: Swap node data values only, not node links.
+
+### Algorithm
+1. Repeat passes through the list until no swaps occur.
+2. Traverse the list node by node.
+3. Compare the current node value with the next node value.
+4. If they are out of order:
+   - Swap their data values.
+5. Continue until the end of the list.
+6. When a full pass occurs without swaps, the list is sorted.
+
+# Function 43: mergeSortedLists
+
+### Problem Understanding
+- Input: A, B — pointers to two sorted lists, result — pointer to an empty list to store the merged output
+- Output: void — builds the merged sorted list into result
+- Edge cases: one or both lists are empty
+
+### Algorithm
+1. Initialize two pointers: pA = A->head, pB = B->head
+2. While both pA and pB are not NULL:
+   - If pA->data <= pB->data, insert pA->data into result and advance pA
+   - Otherwise, insert pB->data into result and advance pB
+3. If elements remain in A, insert them all into result
+4. If elements remain in B, insert them all into result
+
+Doubly Linked List
+# Function 44: initListDLL
+
+## Problem Understanding
+Input: L
+Output: Initializes the doubly linked list.
+Purpose: Creates an empty doubly linked list.
+
+### Algorithm
+1. Set head to NULL.
+2. Set tail to NULL.
+3. Set size to 0.
+
+# Function 45: insertBeginningDLL
+
+### Problem Understanding
+- Input: L — pointer to the doubly linked list, value — integer to insert
+- Output: returns 0 on success, -1 if memory allocation fails
+- Edge cases: empty list (update both head and tail)
+
+### Algorithm
+1. Allocate a new node using malloc
+2. If allocation fails, return -1
+3. Store value in the new node
+4. Set new node's next to current L->head
+5. Set new node's prev to NULL
+6. If list is empty (L->head == NULL), update L->tail to new node
+7. Otherwise, set old head's prev to new node
+8. Update L->head to new node
+9. Return 0
+
+# Function 46: insertEndDLL
 
 ## Problem Understanding
  -Input: doubly linked list L, value value
@@ -242,35 +707,7 @@ Edge Cases
     -Update tail to the new node.
 5.Return success status.
 
-# Function 45: mergeSortedListe
-
-## ​Problem Understanding (An Example)
-​Input: List *A, List *B (two sorted linked lists), List *result (empty list container).
-​Output: Modifies result to contain all elements from A and B in non-descending order.
-​Key Logic: In-place pointer manipulation (no data copying).
-​Edge cases: One or both input lists are empty (NULL).
-
-### ​Algorithm
-​Initialize currentA and currentB to the heads of the respective lists.
-​Compare the first nodes of A and B to set the result->head.
-​Use a tailResult pointer to track the last added node in the new sequence.
-​Iterate through both lists using a while loop, attaching the smaller node to tailResult->next and advancing the pointers.
-​Once one list is exhausted, link the remaining part of the other list directly to tailResult->next.
-​Update result->tail to the final node of the merged list.
-
-# Function 45: initListDLL
-
-## Problem Understanding
-Input: L
-Output: Initializes the doubly linked list.
-Purpose: Creates an empty doubly linked list.
-
-### Algorithm
-1. Set head to NULL.
-2. Set tail to NULL.
-3. Set size to 0.
-
-# Function: deleteByValueDLL
+# Function 47: deleteByValueDLL
 
 ## ​Problem Understanding (An Example)
 ​Input: DLL *L (Doubly Linked List), int value (target to remove).
@@ -287,23 +724,38 @@ Purpose: Creates an empty doubly linked list.
 ​Ensure the new Head's prev and the new Tail's next are set to NULL if they exist.
 ​Use free(current) to release memory and exit the function.
 
-# Function 49: displayForward
+# Function 48: displayForward
 
 ## Problem Understanding
-Input: L
-Output: Prints all elements from beginning to end.
-Purpose: Displays the doubly linked list in forward order.
-
-Edge Cases
-- Empty list.
+- Input: Doubly linked list L.
+- Output: Prints all node values from beginning to end.
+- Concept: Traversal uses next pointers.
 
 ### Algorithm
 1. Start from the head node.
-2. Traverse using next pointers.
-3. Print each node’s data.
-4. Stop when reaching NULL.
+2. While the current node is not NULL:
+   - Print the current node data.
+   - Move to the next node using current = current->next.
+3. Stop when the end of the list is reached.
 
-# Function 49: push
+# Function 49: displayBackward
+
+### Problem Understanding
+- Input: L — pointer to the doubly linked list
+- Output: void — prints all elements from tail to head
+- Edge cases: empty list (nothing to display)
+
+### Algorithm
+1. If list is empty (L->tail == NULL), return immediately
+2. Start at L->tail
+3. Traverse the list by following prev pointers
+4. At each node, print current->data
+5. Move to current->prev
+6. Repeat until current == NULL
+
+Stack
+
+# Function 51: push
 
 ## Problem Understanding
  -Input: stack S, value value
@@ -317,34 +769,23 @@ Edge Cases
 5.Update the stack’s top to the new node.
 6.Return success.
 
-# Function 55: isEmpty
+# Function 53: peek
 
 ## Problem Understanding
-Input: S
-Output: Returns 1 if stack is empty, otherwise 0.
-Purpose: Checks whether the stack contains elements.
+- Input: Stack S.
+- Output: Returns the top value without removing it.
+- Edge Cases: Empty stack.
 
 ### Algorithm
-1. Check if S->top is NULL.
-2. If true, return 1.
-3. Otherwise, return 0.
+1. Check if the stack is empty.
+2. If empty, return a sentinel value.
+3. Otherwise, access data[top].
+4. Return the value without modifying top.
 
-# Function 60: rear
 
-## Problem Understanding
-Input: Q
-Output: Returns the front or rear element of the queue.
-Purpose: Accesses queue elements without removing them.
+Queue
 
-Edge Cases
-- Empty queue.
-
-### Algorithm
-1. Check if queue is empty.
-2. If empty, return sentinel value.
-3. Otherwise, return Q->rear->data.
-
-# Function 53: initQueue
+# Function 55: initQueue
 
 ## Problem Understanding
     -Input: queue Q
@@ -357,7 +798,28 @@ Edge Cases
 3.Set rear to NULL.
 4.The queue is now empty and ready for use.
 
-# Function 59: writeRecord
+# Function 58 - 59: front / rear
+
+## Problem Understanding
+- Input: Queue Q.
+- Output:
+  - front() returns the first element.
+  - rear() returns the last element.
+- Constraint: Neither function removes elements.
+
+### Algorithm
+1. For front():
+   - Access data[Q->front].
+   - Return the value.
+2. For rear():
+   - Compute the last index using:
+     (Q->rear - 1 + MAX) % MAX
+   - Return the value at that index.
+3. Do not modify the queue structure.
+
+File Handling
+
+# Function 61: writeRecord
 
 ## Problem Understanding
     -Input: file name filename, pointer to record r
@@ -371,24 +833,22 @@ Edge Cases
 5.Close the file.
 6.Return success.
 
-# Function 65: appendRecord
+# Function 63: countRecords
 
 ## Problem Understanding
-Input: filename, r
-Output: Appends a record to a binary file.
-Purpose: Adds data at the end of the file.
-
-Edge Cases
-- File opening failure.
+- Input: Binary file name.
+- Output: Returns the number of records stored in the file.
+- Concept: File size divided by record size.
 
 ### Algorithm
-1. Open file in "ab" mode.
-2. If file cannot open, return -1.
-3. Write the record into the file.
-4. Close the file.
-5. Return success value.
+1. Open the file in binary read mode ("rb").
+2. Move the file pointer to the end using fseek.
+3. Get the file size using ftell.
+4. Divide the file size by sizeof(Record).
+5. Return the calculated number of records.
+6. Close the file.
 
-# Function 64: updateRecord
+# Function 66: updateRecord
 
 ## Problem Understanding
     -Input: file name filename, record index index, pointer to new data newData
@@ -405,23 +865,23 @@ Edge Cases
 8.Close the file.
 9.Return success.
 
-# Function 70: my_strcpy
+String
+
+# Function 68: my_strlen
 
 ## Problem Understanding
-Input: dest, src
-Output: Returns dest containing copied string.
-Purpose: Copies one string into another.
-
-Edge Cases
-- Destination buffer too small.
+- Input: String s.
+- Output: Returns the number of characters in the string.
+- Constraint: Stop at the null terminator '\0'.
 
 ### Algorithm
-1. Start from first character of src.
-2. Copy each character into dest.
-3. Continue until '\0' is copied.
-4. Return dest.
+1. Initialize a counter variable i to 0.
+2. Loop while s[i] is not '\0'.
+3. Increment i during each iteration.
+4. When '\0' is reached, stop looping.
+5. Return i as the string length.
 
-# Function 68: my_strcat
+# Function 71: my_strcat
 
 ## Problem Understanding
     -Input: destination string dest, source string src
@@ -435,24 +895,25 @@ Edge Cases
 5.Add a null terminator at the end of the new string.
 6.Return dest.
 
-# Function 75: toUpperCase
+# Function 72: my_strcmp
 
 ## Problem Understanding
-Input: s
-Output: Converts all lowercase letters to uppercase.
-Purpose: Modifies the string in-place.
-
-Edge Cases
-- Empty string.
-- String already uppercase.
+- Input: Two strings a and b.
+- Output:
+  - 0 if equal,
+  - Negative if a < b,
+  - Positive if a > b.
+- Concept: Compare characters one by one.
 
 ### Algorithm
-1. Traverse the string character by character.
-2. Check if character is between 'a' and 'z'.
-3. Convert it to uppercase.
-4. Continue until '\0'.
+1. Start comparing characters from index 0.
+2. While characters are equal and not '\0':
+   - Move to the next index.
+3. At the first mismatch:
+   - Return a[i] - b[i].
+4. If both strings end together, return 0.
 
-#Function 73: reverseString
+# Function 76: reverseString
 
 ##Problem Understanding
     -Input: string s
@@ -467,31 +928,30 @@ Edge Cases
 4.Swap characters at i and j.
 5.Increment i, decrement j.
 6.Repeat until i >= j.
-
-# Function 81: countWords
+ 
+ # Function 77 - 78: countVowels / countConsonants
 
 ## Problem Understanding
-Input: s
-Output: Returns the number of words.
-Purpose: Counts words in a string.
-
-Edge Cases
-- Empty string.
-- Multiple spaces.
-- Leading/trailing spaces.
+- Input: String s.
+- Output:
+  - countVowels returns the number of vowels.
+  - countConsonants returns the number of consonants.
+- Constraint: Ignore non-alphabetic characters.
 
 ### Algorithm
-1. Initialize count to 0.
-2. Initialize inWord to false.
-3. Traverse the string.
-4. If current character is not whitespace and inWord is false:
-   - Increment count.
-   - Set inWord to true.
-5. If current character is whitespace:
-   - Set inWord to false.
-6. Return count.
- 
- # #Function 77: removeChar
+1. Initialize a counter to 0.
+2. Traverse the string character by character.
+3. Convert each character to lowercase.
+4. For vowels:
+   - Check if the character is in "aeiou".
+   - If yes, increment the counter.
+5. For consonants:
+   - Check if the character is alphabetic.
+   - Ensure it is not a vowel.
+   - Increment the counter.
+6. Return the final count.
+
+ # #Function 88: removeChar
 
 
 ## Problem Understanding
@@ -506,40 +966,33 @@ Edge Cases
 5.Always increment i.
 6.After traversal, add '\0' at position j.
 
-# Function 87: loadDataset
+# Function 91: substring
 
 ## Problem Understanding
-Input: filename, arr[], count
-Output: Loads records into arr[] and updates count.
-Purpose: Reads records from a binary file.
-
-Edge Cases
-- File opening failure.
-- Empty file.
+- Input: Source string src, starting index start, length len, destination string dest.
+- Output: Copies a portion of the string into dest.
+- Constraint: Always null-terminate the destination string.
 
 ### Algorithm
-1. Open the file in binary read mode.
-2. If opening fails, return -1.
-3. Initialize count to 0.
-4. Read records one by one into arr[].
-5. Increment count for each record read.
-6. Close the file.
-7. Return success value. 
+1. Check that start + len does not exceed the source string length.
+2. Start a loop from i = 0 to len - 1.
+3. Copy src[start + i] into dest[i].
+4. After copying, place '\0' at dest[len].
+5. The destination string now contains the substring.
 
-# Function 91: findMinByField
+Bonus
 
-Problem Understanding
-Input: arr[], count
-Output: Returns the record with the minimum field value.
-Purpose: Finds the smallest record according to a specific field.
+# Function 94: displayDataset
 
-Edge Cases
-- Empty array.
+## Problem Understanding
+- Input: Array of Record structures and the number of records.
+- Output: Displays all records in a formatted table.
+- Purpose: Make dataset output organized and readable.
 
-Algorithm
-1. Assume first record is the minimum.
-2. Traverse the array from second element.
-3. Compare current field with minimum field.
-4. If smaller value is found:
-   - Update minimum record.
-5. Return the minimum record.
+### Algorithm
+1. Print table headers.
+2. Loop through all records from index 0 to count - 1.
+3. For each record:
+   - Print each field using formatted widths with printf.
+4. Print each record on a separate line.
+5. Continue until all records are displayed.
