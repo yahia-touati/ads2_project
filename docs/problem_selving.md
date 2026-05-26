@@ -881,6 +881,19 @@ String
 4. When '\0' is reached, stop looping.
 5. Return i as the string length.
 
+# Function 69: my_strcpy
+
+### Problem Understanding
+- Input: dest — destination buffer, src — source string to copy
+- Output: returns pointer to dest
+- Edge cases: src is an empty string (only '\0' is copied)
+
+### Algorithm
+1. Save the original pointer to dest
+2. Copy characters one by one from src to dest
+3. Stop after copying the null terminator '\0'
+4. Return the saved pointer to dest
+
 # Function 71: my_strcat
 
 ## Problem Understanding
@@ -912,6 +925,32 @@ String
 3. At the first mismatch:
    - Return a[i] - b[i].
 4. If both strings end together, return 0.
+
+# Function 74: toUpperCase
+
+### Problem Understanding
+- Input: s — pointer to a string
+- Output: void — modifies the string in-place, no return value
+- Edge cases: empty string, characters that are not letters (left unchanged)
+
+### Algorithm
+1. Traverse the string character by character until '\0'
+2. At each character, check if it is a lowercase letter ('a' <= s[i] <= 'z')
+3. If yes, subtract 32 from it (or use toupper())
+4. Move to the next character
+
+# Function 75: toLowerCase
+
+### Problem Understanding
+- Input: s — pointer to a string
+- Output: void — modifies the string in-place, no return value
+- Edge cases: empty string, characters that are not letters (left unchanged)
+
+### Algorithm
+1. Traverse the string character by character until '\0'
+2. At each character, check if it is an uppercase letter ('A' <= s[i] <= 'Z')
+3. If yes, add 32 to it (or use tolower())
+4. Move to the next character
 
 # Function 76: reverseString
 
@@ -951,6 +990,21 @@ String
    - Increment the counter.
 6. Return the final count.
 
+# Function 79: countWords
+
+### Problem Understanding
+- Input: s — pointer to a string
+- Output: returns integer count of words in the string
+- Edge cases: empty string, leading/trailing whitespace, multiple spaces between words
+
+### Algorithm
+1. Initialize count = 0 and inWord = 0
+2. Traverse the string character by character until '\0'
+3. At each character:
+   - If it is a non-whitespace and inWord == 0, increment count and set inWord = 1
+   - If it is a whitespace, set inWord = 0
+4. Return count
+
  # #Function 88: removeChar
 
 
@@ -982,6 +1036,22 @@ String
 
 Bonus
 
+# Function 93: loadDataset
+
+### Problem Understanding
+- Input: filename — path to binary file, arr[] — array to store records, *count — pointer to store number of records loaded
+- Output: returns 0 on success, -1 if file cannot be opened
+- Edge cases: file does not exist, empty file, array capacity limit reached
+
+### Algorithm
+1. Open the file in binary read mode ("rb")
+2. If file opens fails, return -1
+3. Set *count = 0
+4. Read records one by one using fread until EOF or array is full
+5. At each successful read, increment *count
+6. Close the file
+7. Return 0
+
 # Function 94: displayDataset
 
 ## Problem Understanding
@@ -996,3 +1066,75 @@ Bonus
    - Print each field using formatted widths with printf.
 4. Print each record on a separate line.
 5. Continue until all records are displayed.
+
+# Function 95: sortDatasetByField
+
+### Problem Understanding
+- Input: arr[] — array of records, count — number of records, field — string indicating sort key ("score", "name", or "id")
+- Output: void — sorts arr[] in-place
+- Edge cases: invalid field name, count == 0 or count == 1
+
+### Algorithm
+1. Determine which field to sort by using strcmp on field
+2. Apply a sort algorithm (e.g. bubble sort) on arr[]
+3. At each comparison step, compare the correct struct field:
+   - "score" — compare float score values
+   - "name" — compare strings using strcmp
+   - "id" — compare integer id values
+4. Swap records where needed
+
+# Function 96 - 97: findMaxByField / findMinByField
+
+### Problem Understanding
+- Input: arr[] — array of records, count — number of records
+- Output: returns the full Record struct with the highest (or lowest) score
+- Edge cases: count == 0 (undefined behavior, assume count >= 1)
+
+### Algorithm
+1. Initialize result to arr[0]
+2. Traverse arr[] from index 1 to count - 1
+3. At each record, compare arr[i].score with result.score
+4. If higher (or lower for min), update result to arr[i]
+5. Return result
+
+# Function 98: averageByField
+
+### Problem Understanding
+- Input: arr[] — array of records, count — number of records
+- Output: returns float average of all score fields, or 0.0 if count is 0
+- Edge cases: count == 0 (return 0.0 to avoid division by zero)
+
+### Algorithm
+1. If count == 0, return 0.0
+2. Initialize sum = 0.0
+3. Traverse arr[] from index 0 to count - 1
+4. Add each arr[i].score to sum
+5. Return sum / count cast to float
+
+# Function 99: filterByCondition
+
+### Problem Understanding
+- Input: arr[] — array of records, count — number of records, threshold — minimum score value, out[] — array to store matching records
+- Output: returns integer count of records copied into out[]
+- Edge cases: no records match, count == 0
+
+### Algorithm
+1. Initialize outCount = 0
+2. Traverse arr[] from index 0 to count - 1
+3. At each record, check if arr[i].score > threshold
+4. If condition is met, copy record into out[outCount] and increment outCount
+5. Return outCount
+# Function 100: saveBinaryReport
+
+### Problem Understanding
+- Input: filename — path to output file, arr[] — array of records, count — number of records to write
+- Output: returns 0 on success, -1 if file cannot be opened
+- Edge cases: file creation fails, count == 0 (empty file written)
+
+### Algorithm
+1. Open the file in binary write mode ("wb")
+2. If file open fails, return -1
+3. Traverse arr[] from index 0 to count - 1
+4. Write each record using fwrite
+5. Close the file
+6. Return 0
