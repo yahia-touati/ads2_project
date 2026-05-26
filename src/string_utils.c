@@ -26,6 +26,29 @@ char* my_strcpy(char* dest, const char* src) { // dest is the destination string
     return dest; // Return the destination string
 }
 
+char* my_strncpy(char* dest, const char* src, int n)
+{
+    if (dest == NULL || src == NULL || n <= 0)
+        return dest;
+
+    int i = 0;
+
+    // copy characters
+    while (i < n && src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
+
+    // pad with '\0'
+    while (i < n)
+    {
+        dest[i] = '\0';
+        i++;
+    }
+
+    return dest;
+}
 /* Concatenates src to the end of dest */
 char* my_strcat(char* dest, const char* src)
 {
