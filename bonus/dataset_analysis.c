@@ -6,28 +6,25 @@
 #include "../include/file_utils.h"
 #include "../include/common.h"
 
-/*Reads all records from a file into an array */
-int loadDataset(const char* filename, Record arr[], int* count)
-{
-    FILE* file = fopen(filename, "rb");
-    if (file == NULL)
-    {
-        perror("Error opening file");
-        return -1;
+
+/* A simple implementation of loadDataset */
+int loadDataset(const char* filename, Record arr[], int* count) { // filename is the name of the file to read from, arr is the array to store the records, count is a pointer to an integer to store the number of records loaded
+
+    FILE* file = fopen(filename, "rb"); // Open the file in binary read mode
+
+    if(file == NULL) { // Check if the file was opened successfully
+        return -1; // Return -1 to indicate an error if the file could not be opened
     }
 
-    int index = 0;
-    while (fread(&arr[index], sizeof(Record), 1, file) == 1)
-    {
-        index++;
-        if (index >= MAX_LIST_SIZE)  // Ensure we don't exceed the array size
-        {
-            break;
-        }
+    *count = 0; // Initialize the count of records to 0
+
+    while(fread(&arr[*count], sizeof(Record), 1, file) == 1) { // Read records from the file one by one until the end of the file is reached
+        (*count)++; // Increment the count of records for each record successfully read
     }
-    *count = index;  // Set the count of records read
-    fclose(file);
-    return 0;  // Success
+
+    fclose(file); // Close the file after reading
+
+    return 0; // Return 0 to indicate successful loading of the dataset
 }
 
 /* Displays the dataset in a tabular format */
@@ -118,19 +115,25 @@ Record FindMaxByField(Record arr[], int count)
     }
     return maxRecord;
 }
-/*Finds the record with the minimum value for a specific field */
-Record FindMinByField(Record arr[], int count)
-{
-    Record minRecord = arr[0];
-    for (int i = 0; i < count; i++)
-    {
-        if (arr[i].score < minRecord.score)
-        {
-            minRecord = arr[i];
+
+
+/* A simple implementation of findMinByField */
+Record findMinByField(Record arr[], int count) { // arr is the array of records, count is the number of records in the array
+
+    int i; // Initialize index for iterating through the array
+    Record min = arr[0]; // Assume the first record is the minimum initially
+
+    for(i = 1; i < count; i++) { // Loop through the array starting from the second record
+
+        if(arr[i].score < min.score) { // Compare the score of the current record with the minimum score found so far
+            min = arr[i]; // If the current record has a lower score, update the minimum record
         }
+
     }
-    return minRecord;
+
+    return min; // Return the record with the minimum score found in the array
 }
+
 /* Calculates the average of a specific field in the dataset */
 float averageByField(Record arr[], int count)
 {
