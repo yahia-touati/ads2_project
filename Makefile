@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -I./include -Wall
-SRCS = demo.c $(wildcard Menu/*.c) $(wildcard src/*.c)
+SRCS = demo.c $(wildcard Menu/*.c) $(wildcard src/*.c) $(wildcard bonus/*.c)
 TARGET = my_project
 
 all: $(TARGET)

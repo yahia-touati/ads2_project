@@ -29,5 +29,16 @@ void QueuesMenu();
 
 /* *** Stacks Menu *** */
 void StacksMenu();
+ 
+/* *** Bonus ****/
+void BonusMenu();
+int loadDataset(const char* filename, Record arr[], int* count);
+void displayDataset(Record arr[], int count);
+void sortDatasetByField(Record arr[], int count, char* filed);
+Record FindMaxByField(Record arr[], int count);
+Record FindMinByField(Record arr[], int count);
+float avreageByField(Record arr[], int count);
+int filterByConditon(Record arr[],int count, float threshold, Record out[]);
+int saveBinaryReport(const char* filename, Record arr[], int count);
 
 #endif

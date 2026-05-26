@@ -16,7 +16,7 @@ int main() {
     do {
         printf("\n=== ADS2 PROJECT DEMO ===\n");
         printf("1. Arrays\n2. Matrices\n3. Linked Lists\n4. Stacks\n"
-               "5. Queues\n6. File Handling\n7. String Utils\n0. Exit\nChoice: ");
+               "5. Queues\n6. File Handling\n7. String Utils\n8. Bonus\n0. Exit\nChoice: ");
         scanf("%d", &choice);
         switch(choice) {
             case 1: arrayMenu(arr, &size); 
@@ -38,6 +38,9 @@ int main() {
                 break;
             case 7: 
                 String_UtilsMenu(); 
+                break;
+            case 8:
+                BonusMenu();
                 break;
             default:
                 printf("Invalid choice! Please try again.\n"); 
