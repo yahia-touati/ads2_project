@@ -118,7 +118,7 @@ Record FindMaxByField(Record arr[], int count)
 
 
 /* A simple implementation of findMinByField */
-Record findMinByField(Record arr[], int count) { // arr is the array of records, count is the number of records in the array
+Record FindMinByField(Record arr[], int count) { // arr is the array of records, count is the number of records in the array
 
     int i; // Initialize index for iterating through the array
     Record min = arr[0]; // Assume the first record is the minimum initially

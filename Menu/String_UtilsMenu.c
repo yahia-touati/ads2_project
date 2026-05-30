@@ -37,7 +37,14 @@ void String_UtilsMenu() {
                 printf("Copied string: %s\n", dest);
                 break;
             case 3:
-
+                printf("Enter source string: ");
+                while (getchar() != '\n');
+                fgets(str, MAX_STRING_LEN, stdin);
+                str[strcspn(str, "\n")] = '\0';
+                printf("Enter number of characters to copy: ");
+                scanf("%d", &n);
+                my_strncpy(dest, str, n);
+                printf("Copied string: %s\n", dest);
                 break;
             case 4:
                 printf("Enter the first string: ");
@@ -127,6 +134,12 @@ void String_UtilsMenu() {
                 printf("Number of vowels is: %d", count_vowels);
                 break;
             case 11:
+                printf("Enter the string: ");
+                while (getchar() != '\n');  
+                fgets(str, MAX_STRING_LEN, stdin);
+                str[strcspn(str, "\n")] = '\0';
+                int count_consonants = countConsonants(str);
+                printf("Number of consonants is: %d", count_consonants);
                 break;
             case 12:
                 printf("Enter the string: ");
