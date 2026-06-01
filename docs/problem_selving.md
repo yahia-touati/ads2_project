@@ -1,8 +1,8 @@
 Part A - 1D static Arrays
 
-# Function 1: ReadAraay
+# Function 1: ReadArray
 
-## Problem Understending 
+## Problem Understanding 
 - Inupt arr[] - *size
 - Output: return if *size > MAX_1D
 - Edge Cases *size > MAX_1D or *size < 0
