@@ -7,6 +7,23 @@
 #include "../include/common.h"
 
 
+Record inputRecord()
+{
+    Record Record;
+    printf("Enter ID: ");
+    scanf("%d", &Record.id);
+    while(getchar() != '\n'); // Clear the input buffer
+    printf("Enter Name: ");
+    fgets(Record.name, sizeof(Record.name), stdin);
+    Record.name[strcspn(Record.name, "\n")] = '\0'; // Remove the newline character
+    printf("Enter Score: ");
+    scanf("%f", &Record.score);
+    while(getchar() != '\n'); // Clear the input buffer
+    printf("Enter Category: ");
+    fgets(Record.category, sizeof(Record.category), stdin);
+    Record.category[strcspn(Record.category, "\n")] = '\0'; // Remove the newline character
+    return Record;
+}
 /* A simple implementation of loadDataset */
 int loadDataset(const char* filename, Record arr[], int* count) { // filename is the name of the file to read from, arr is the array to store the records, count is a pointer to an integer to store the number of records loaded
 

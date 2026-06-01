@@ -40,5 +40,6 @@ Record FindMinByField(Record arr[], int count);
 float avreageByField(Record arr[], int count);
 int filterByConditon(Record arr[],int count, float threshold, Record out[]);
 int saveBinaryReport(const char* filename, Record arr[], int count);
+Record inputRecord();
 
 #endif

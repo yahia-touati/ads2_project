@@ -12,7 +12,7 @@ void BonusMenu() {
         printf("\n=== Bonus Menu ===\n");
         printf("1. Number of Records   2.Display Dataset  3. Sort Dataset\n" 
                "4. Find Max            5. Find Min        6. Calculate Average\n"
-               "7. Filter by Condition 8. Save Dataset\n"
+               "7. Filter by Condition 8. Save Dataset    9. Input Record\n"
                "0. Back\nChoice: ");
         scanf("%d", &choice);
         switch (choice) {
@@ -59,6 +59,15 @@ void BonusMenu() {
                     printf("Dataset saved to report.bin successfully.\n");
                 } else {
                     printf("Failed to save dataset.\n");
+                }
+                break;
+            case 9:
+                Record newRecord = inputRecord();
+                if (count < MAX_LIST_SIZE) {
+                    dataset[count++] = newRecord;
+                    printf("Record added successfully.\n");
+                } else {
+                    printf("Dataset is full. Cannot add more records.\n");
                 }
                 break;
             default:

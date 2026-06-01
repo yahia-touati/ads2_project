@@ -13,7 +13,7 @@ int main() {
     int cols = 0;
     int rows = 0;
     int a[MAX_ROWS][MAX_COLS];
-    do {
+    do{
         printf("\n=== ADS2 PROJECT DEMO ===\n");
         printf("1. Arrays\n2. Matrices\n3. Linked Lists\n4. Stacks\n"
                "5. Queues\n6. File Handling\n7. String Utils\n8. Bonus\n0. Exit\nChoice: ");
